@@ -2,11 +2,7 @@ import 'package:design_patterns_flutter/behavioral/observer/flutter_examples/ui/
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(
-    const MaterialApp(
-      home: WeatherObserverScreen(),
-    ),
-  );
+  runApp(WeatherApp(),);
 }
 
 
