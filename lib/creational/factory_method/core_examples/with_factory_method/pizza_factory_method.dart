@@ -1,4 +1,4 @@
-// 🍕——— The “Product” hierarchy ———🍕
+// —— The “Product” hierarchy ——
 
 // Abstract Product: defines the interface all concrete products must implement.
 // 🔹 Promotes polymorphism: client code can work with Pizza without knowing exact subclasses.
@@ -53,7 +53,7 @@ class VeggiePizza extends Pizza {
   }
 }
 
-// 🏭——— The Creator — PizzaStore ———🏭
+// —— The Creator — PizzaStore ——
 
 // Abstract Creator: declares the factory method createPizza()
 // 🔹 Factory Method Pattern: defines an interface for creating an object, but lets subclasses decide which class to instantiate.
@@ -83,7 +83,7 @@ abstract class PizzaStore {
   }
 }
 
-// 🏙️——— Concrete Creators — NY & Chicago ———🏙️
+// —— Concrete Creators — NY & Chicago ——
 
 // 🔹 Each store customizes the product instantiation logic, not the whole process.
 // 🔹 Respect SRP: creation logic stays in one place.
