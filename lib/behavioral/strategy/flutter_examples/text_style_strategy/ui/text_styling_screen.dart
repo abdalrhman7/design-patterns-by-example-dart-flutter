@@ -57,21 +57,6 @@ class _TextStylingScreenState extends State<TextStylingScreen> {
                 },
               );
             }),
-
-            const Spacer(),
-
-            // Summary of current principles in action
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text('Key Design Principles:', style: TextStyle(fontWeight: FontWeight.bold)),
-                Text('• Code to an interface, not an implementation'),
-                Text('• Encapsulate what varies'),
-                Text('• Favor composition over inheritance'),
-                Text('• Polymorphism in action'),
-                Text('• Open/Closed: add new styles without modifying existing code'),
-              ],
-            ),
           ],
         ),
       ),

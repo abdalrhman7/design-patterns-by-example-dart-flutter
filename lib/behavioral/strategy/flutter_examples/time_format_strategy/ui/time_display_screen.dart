@@ -60,20 +60,6 @@ class _TimeDisplayScreenState extends State<TimeDisplayScreen> {
                 onChanged: (val) => setState(() => _selected = val!),
               );
             }),
-
-            const Spacer(),
-
-            /// 🔹 Summary of Design Principles used
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text('Design Principles:', style: TextStyle(fontWeight: FontWeight.bold)),
-                Text('• Strategy Pattern: encapsulates algorithms (formats)'),
-                Text('• Open/Closed Principle: add new formats without changing UI'),
-                Text('• Composition over Inheritance: pass strategies dynamically'),
-                Text('• Polymorphism: strategy.format(...) chooses correct logic'),
-              ],
-            )
           ],
         ),
       ),
