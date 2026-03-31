@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:design_patterns_flutter/behavioral/observer/flutter_examples/weather_observer.dart';
+import 'package:design_patterns_flutter/behavioral/observer/flutter_examples/weather_observer/weather_observer.dart';
 import 'package:flutter/material.dart';
 
 class WeatherObserverScreen extends StatefulWidget {
@@ -56,16 +56,7 @@ class _WeatherObserverScreenState extends State<WeatherObserverScreen> {
               onPressed: _updateWeather,
               child: const Text('🔄 Update Weather'),
             ),
-            const SizedBox(height: 30),
-            const Divider(),
-            const Text('Design Principles:',
-                style: TextStyle(fontWeight: FontWeight.bold)),
-            const Text('• One-to-many relationship (Subject → Observers)'),
-            const Text('• Loose coupling between WeatherStation and displays'),
-            const Text(
-                '• Observers react independently (Separation of Concerns)'),
-            const Text(
-                '• Open/Closed: Add new observers without changing existing code'),
+            const SizedBox(height: 250),
           ],
         ),
       ),
