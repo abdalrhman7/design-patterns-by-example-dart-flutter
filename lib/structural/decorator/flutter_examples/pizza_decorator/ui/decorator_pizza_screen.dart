@@ -1,5 +1,5 @@
-import 'package:design_patterns_flutter/structural/decorator/flutter_examples/pizza_decorator.dart';
 import 'package:flutter/material.dart';
+import '../pizza_decorator.dart';
 
 class DecoratorPizzaScreen extends StatefulWidget {
   const DecoratorPizzaScreen({super.key});
