@@ -2,10 +2,10 @@ import 'package:design_patterns_flutter/structural/decorator/flutter_examples/pi
 import 'package:flutter/material.dart';
 import 'package:design_patterns_flutter/behavioral/strategy/flutter_examples/time_format_strategy/ui/time_display_screen.dart';
 import 'package:design_patterns_flutter/behavioral/strategy/flutter_examples/text_style_strategy/ui/text_styling_screen.dart';
-import 'package:design_patterns_flutter/creational/factory_method/flutter_examples/ui/factory_method_dialog_example.dart';
 import 'package:design_patterns_flutter/creational/singletone/flutter_examples/ui/counter_singletone_screens.dart';
 
 import 'behavioral/observer/flutter_examples/weather_observer/ui/weather_observer_screen.dart';
+import 'creational/factory_method/flutter_examples/ui/dialog_factory_screen.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -68,7 +68,7 @@ class HomePage extends StatelessWidget {
                   _ExampleItem(
                     title: 'Example 1: Dialog Factory',
                     subtitle: 'Cross-platform UI components.',
-                    screen: const FactoryMethodDialogExample(),
+                    screen: const DialogFactoryScreen(),
                   ),
                 ],
               ),

@@ -2,7 +2,7 @@
 // This version shows how things can go wrong if you don’t use the Factory Method pattern.
 // It tightly couples the client code to concrete classes, making it harder to scale or modify.
 
-// 🍕 Pizza classes are still okay — same as before
+
 abstract class Pizza {
   String name;
   Pizza(this.name);

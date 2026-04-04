@@ -86,7 +86,6 @@ abstract class PizzaStore {
 // —— Concrete Creators — NY & Chicago ——
 
 // 🔹 Each store customizes the product instantiation logic, not the whole process.
-// 🔹 Respect SRP: creation logic stays in one place.
 class NYPizzaStore extends PizzaStore {
   @override
   Pizza createPizza(String type) {

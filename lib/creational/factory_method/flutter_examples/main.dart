@@ -1,4 +1,4 @@
-import 'package:design_patterns_flutter/creational/factory_method/flutter_examples/ui/factory_method_dialog_example.dart';
+import 'package:design_patterns_flutter/creational/factory_method/flutter_examples/ui/dialog_factory_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +12,7 @@ class DialogFactoryMethodApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Factory Method : Dialog',
-      home: const FactoryMethodDialogExample(),
+      home: const DialogFactoryScreen(),
     );
   }
 }

@@ -6,16 +6,16 @@ import 'package:flutter/material.dart';
 // UI lets the user pick a dialog type (Android/iOS), and shows it using selected DialogManager.
 // 🔹 Uses only abstract DialogManager and CustomDialog types — fully decoupled from concrete implementations.
 
-class FactoryMethodDialogExample extends StatefulWidget {
-  const FactoryMethodDialogExample({super.key});
+class DialogFactoryScreen extends StatefulWidget {
+  const DialogFactoryScreen({super.key});
 
   @override
-  State<FactoryMethodDialogExample> createState() =>
-      _FactoryMethodDialogExampleState();
+  State<DialogFactoryScreen> createState() =>
+      _DialogFactoryScreenState();
 }
 
-class _FactoryMethodDialogExampleState
-    extends State<FactoryMethodDialogExample> {
+class _DialogFactoryScreenState
+    extends State<DialogFactoryScreen> {
   int _selectedPlatform = 0;
   String _selectedDialogType = 'alert';
 
