@@ -132,7 +132,8 @@ abstract class DialogManager {
 // —— Concrete Creator: AndroidDialogManager ——
 
 // Implements the factory method to create Android-style dialogs.
-// 🔹 Single Responsibility Principle: responsible only for deciding which Android dialog to create.
+// 🔹 Open/Closed Principle: can add more dialog types without affecting other classes.
+
 class AndroidDialogManager extends DialogManager {
   @override
   CustomDialog createDialog(String type) {
