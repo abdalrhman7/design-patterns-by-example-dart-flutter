@@ -1,7 +1,6 @@
 import 'package:design_patterns_flutter/creational/abstract_factory/flutter_examples/platform_factory/platform_factory.dart';
 import 'package:flutter/material.dart';
 
-// User request: Renamed from WidgetsScreen / PlatformScreen
 class PlatformScreen extends StatefulWidget {
   const PlatformScreen({super.key});
 
@@ -26,6 +25,7 @@ class _PlatformScreenState extends State<PlatformScreen> {
     setState(() {
       _isMaterial = value;
       // 🔹 Switching between factories at runtime!
+      // The rest of the code doesn't care about which factory it's using
       _currentFactory = value ? MaterialWidgetsFactory() : CupertinoWidgetsFactory();
     });
   }
@@ -34,6 +34,7 @@ class _PlatformScreenState extends State<PlatformScreen> {
   Widget build(BuildContext context) {
     // 🔹 Polymorphism in action:
     // We create products (widgets) through an abstract factory, then use them directly.
+    // The UI code is decoupled from concrete widget implementations.
     final button = _currentFactory.createButton(
       onPressed: () => ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Button Pressed!')),

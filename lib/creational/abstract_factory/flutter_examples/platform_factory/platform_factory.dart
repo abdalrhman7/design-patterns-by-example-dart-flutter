@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // Abstract Product 1: PlatformButton
-// 🔹 Now it follows standard Flutter widget structure by receiving values in the constructor
-// 🔹 This is more idiomatic but still allows the factory to decide WHICH widget to create
+// 🔹 Code to an interface, not an implementation
+// Each theme family will implement its own button
 abstract class PlatformButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String text;
@@ -16,6 +16,7 @@ abstract class PlatformButton extends StatelessWidget {
 }
 
 // Abstract Product 2: PlatformCheckbox
+// 🔹 Code to an interface, not an implementation
 abstract class PlatformCheckbox extends StatelessWidget {
   final bool value;
   final ValueChanged<bool?> onChanged;
@@ -30,6 +31,7 @@ abstract class PlatformCheckbox extends StatelessWidget {
 // === Material (Android) Theme Concrete Products ===
 
 // 🔹 Material implementation of the Button
+// 🔹 Each product encapsulates its own behavior
 class MaterialButtonWidget extends PlatformButton {
   const MaterialButtonWidget({
     super.key,
@@ -102,14 +104,16 @@ class CupertinoCheckboxWidget extends PlatformCheckbox {
 // -------------------------------------------------------------
 
 // Abstract Factory: Widgets Factory
-// 🔹 Now the creation methods take the required parameters
-// The factory is responsible for passing these to the constructor of the concrete product
+// 🔹 Interface for creating families of related products
+// This ensures that products created by a factory are compatible with each other.
 abstract class UIWidgetsFactory {
   PlatformButton createButton({required VoidCallback onPressed, required String text});
   PlatformCheckbox createCheckbox({required bool value, required ValueChanged<bool?> onChanged});
 }
 
 // Concrete Factory 1: Material Widgets Factory
+// 🔹 Encapsulates the creation of Material-themed products
+// This follows the principle: Encapsulate what varies
 class MaterialWidgetsFactory implements UIWidgetsFactory {
   @override
   PlatformButton createButton({required VoidCallback onPressed, required String text}) {
@@ -123,6 +127,7 @@ class MaterialWidgetsFactory implements UIWidgetsFactory {
 }
 
 // Concrete Factory 2: Cupertino Widgets Factory
+// 🔹 Encapsulates the creation of Cupertino-themed products
 class CupertinoWidgetsFactory implements UIWidgetsFactory {
   @override
   PlatformButton createButton({required VoidCallback onPressed, required String text}) {
