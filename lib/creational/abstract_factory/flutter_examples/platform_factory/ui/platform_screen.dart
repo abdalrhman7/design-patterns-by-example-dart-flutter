@@ -1,14 +1,15 @@
-import 'package:design_patterns_flutter/creational/abstract_factory/flutter_examples/ui_widgets_factory/platform_factory.dart';
+import 'package:design_patterns_flutter/creational/abstract_factory/flutter_examples/platform_factory/platform_factory.dart';
 import 'package:flutter/material.dart';
 
-class WidgetsScreen extends StatefulWidget {
-  const WidgetsScreen({super.key});
+// User request: Renamed from WidgetsScreen / PlatformScreen
+class PlatformScreen extends StatefulWidget {
+  const PlatformScreen({super.key});
 
   @override
-  State<WidgetsScreen> createState() => _WidgetsScreenState();
+  State<PlatformScreen> createState() => _PlatformScreenState();
 }
 
-class _WidgetsScreenState extends State<WidgetsScreen> {
+class _PlatformScreenState extends State<PlatformScreen> {
   // Current factory being used
   late UIWidgetsFactory _currentFactory;
   bool _isMaterial = true;
@@ -25,7 +26,6 @@ class _WidgetsScreenState extends State<WidgetsScreen> {
     setState(() {
       _isMaterial = value;
       // 🔹 Switching between factories at runtime!
-      // The rest of the code doesn't care about which factory it's using
       _currentFactory = value ? MaterialWidgetsFactory() : CupertinoWidgetsFactory();
     });
   }
@@ -39,7 +39,7 @@ class _WidgetsScreenState extends State<WidgetsScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Abstract Factory: UI Widgets'),
+        title: const Text('Abstract Factory: Platform Widgets'),
       ),
       body: Center(
         child: Column(
@@ -60,19 +60,18 @@ class _WidgetsScreenState extends State<WidgetsScreen> {
             ),
             const Divider(height: 50),
             // 🔹 These widgets are created by the currently injected factory!
-            // The UI code is decoupled from concrete widget implementations.
             button.build(
               context,
               onPressed: () => ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('Button Pressed!')),
               ),
-              text: 'Themed Button',
+              text: 'Platform Button',
             ),
             const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('Checkbox/Switch: '),
+                const Text('Platform Checkbox: '),
                 checkbox.build(
                   context,
                   value: _checkboxValue,
