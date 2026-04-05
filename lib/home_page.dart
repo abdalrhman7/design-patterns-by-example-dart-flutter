@@ -5,6 +5,7 @@ import 'package:design_patterns_flutter/behavioral/strategy/flutter_examples/tex
 import 'package:design_patterns_flutter/creational/singletone/flutter_examples/ui/counter_singletone_screens.dart';
 
 import 'behavioral/observer/flutter_examples/weather_observer/ui/weather_observer_screen.dart';
+import 'creational/abstract_factory/flutter_examples/ui_widgets_factory/ui/PlatformScreen.dart';
 import 'creational/factory_method/flutter_examples/ui/dialog_factory_screen.dart';
 
 class HomePage extends StatelessWidget {
@@ -80,6 +81,17 @@ class HomePage extends StatelessWidget {
                     title: 'Example 1: App State Counter',
                     subtitle: 'Shared instance between different screens.',
                     screen: const CounterFirstScreen(),
+                  ),
+                ],
+              ),
+              _PatternItem(
+                name: 'Abstract Factory',
+                description: 'Create families of related objects without specifying concrete classes.',
+                examples: [
+                  _ExampleItem(
+                    title: 'Example 1: Platform UI Widgets',
+                    subtitle: 'Material vs Cupertino widget families.',
+                    screen: const WidgetsScreen(),
                   ),
                 ],
               ),
