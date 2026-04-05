@@ -33,9 +33,18 @@ class _PlatformScreenState extends State<PlatformScreen> {
   @override
   Widget build(BuildContext context) {
     // 🔹 Polymorphism in action:
-    // We create products through an abstract factory, then use abstract products.
-    final button = _currentFactory.createButton();
-    final checkbox = _currentFactory.createCheckbox();
+    // We create products (widgets) through an abstract factory, then use them directly.
+    final button = _currentFactory.createButton(
+      onPressed: () => ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Button Pressed!')),
+      ),
+      text: 'Platform Button',
+    );
+
+    final checkbox = _currentFactory.createCheckbox(
+      value: _checkboxValue,
+      onChanged: (val) => setState(() => _checkboxValue = val!),
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -60,23 +69,13 @@ class _PlatformScreenState extends State<PlatformScreen> {
             ),
             const Divider(height: 50),
             // 🔹 These widgets are created by the currently injected factory!
-            button.build(
-              context,
-              onPressed: () => ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Button Pressed!')),
-              ),
-              text: 'Platform Button',
-            ),
+            button,
             const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text('Platform Checkbox: '),
-                checkbox.build(
-                  context,
-                  value: _checkboxValue,
-                  onChanged: (val) => setState(() => _checkboxValue = val!),
-                ),
+                checkbox,
               ],
             ),
           ],
