@@ -1,9 +1,3 @@
-# 🚀 Design Patterns in Dart & Flutter
-
-A comprehensive, hands-on guide to mastering **Gang of Four (GoF)** design patterns using the **Dart** language and **Flutter** framework. This repository is designed to bridge the gap between theoretical concepts and real-world application.
-
----
-
 ## 🧠 Why this project?
 
 Learning design patterns can be abstract and confusing. This project simplifies the learning curve by providing:
