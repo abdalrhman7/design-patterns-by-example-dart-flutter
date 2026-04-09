@@ -72,3 +72,9 @@ Every example is built with a focus on:
 3.  Study the `with_pattern` refactor and the 🔹 comments explaining the principles.
 4.  Run the Flutter example to see the dynamic behavior.
 
+---
+
+## 📸 Screenshot
+
+<img width="1024" height="1536" alt="DesignPatterns" src="https://github.com/user-attachments/assets/be6af8a1-eccc-411d-a710-88fb4fc1be40" />
+
