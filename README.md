@@ -26,21 +26,21 @@ lib/
 
 ---
 
-## 🛠️ Implemented Patterns
+##  Implemented Patterns
 
-### 🏗️ Creational Patterns
+###  Creational Patterns
 | Pattern | Description | Status |
 |:--- |:--- |:---:|
 | **Abstract Factory** | Creating families of related objects. | ✅ |
 | **Factory Method** | Instantiating objects without specifying concrete classes. | ✅ |
 | **Singleton** | Ensuring a class has only one instance. | ✅ |
 
-### 🧱 Structural Patterns
+###  Structural Patterns
 | Pattern | Description | Status |
 |:--- |:--- |:---:|
 | **Decorator** | Adding responsibilities to objects dynamically. | ✅ |
 
-### 🎭 Behavioral Patterns
+###  Behavioral Patterns
 | Pattern | Description | Status |
 |:--- |:--- |:---:|
 | **Strategy** | Encapsulating interchangeable algorithms. | ✅ |
