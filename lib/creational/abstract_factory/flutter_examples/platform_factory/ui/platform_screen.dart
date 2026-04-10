@@ -14,8 +14,6 @@ class _PlatformScreenState extends State<PlatformScreen> {
   bool _isMaterial = true;
   bool _checkboxValue = false;
   double _sliderValue = 0.5;
-  String _selectedOption = 'A';
-  final List<String> _options = ['A', 'B', 'C'];
 
   @override
   void initState() {
@@ -43,15 +41,60 @@ class _PlatformScreenState extends State<PlatformScreen> {
         child: Column(
           children: [
             _buildHeader(),
-            const Divider(height: 40),
+            const Divider(height: 25),
             
             _buildSection('Button', _buildButton()),
             _buildSection('Indicator', _buildIndicator()),
             _buildSection('Checkbox / Switch', _buildCheckbox()),
             _buildSection('Slider', _buildSlider()),
-            _buildSection('Segmented Control', _buildSegmentedControl()),
+            const Divider(height: 30),
+            _buildPatternDefinition(),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildPatternDefinition() {
+    return Container(
+      padding: const EdgeInsets.all(16.0),
+      decoration: BoxDecoration(
+        color: Colors.blueGrey.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.blueGrey.withOpacity(0.2)),
+      ),
+      child: const Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(Icons.info_outline, color: Colors.blueGrey),
+              SizedBox(width: 8),
+              Text(
+                'Abstract Factory Pattern',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blueGrey,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 12),
+          Text(
+            'Provides an interface for creating families of related or dependent objects without specifying their concrete classes.',
+            style: TextStyle(fontSize: 14, height: 1.5),
+          ),
+          SizedBox(height: 8),
+          Text(
+            'In this example: It is used to create a suite of widgets (Button, Slider, etc.) that match the specific platform theme (Material or Cupertino) dynamically.',
+            style: TextStyle(
+              fontSize: 14,
+              fontStyle: FontStyle.italic,
+              color: Colors.blueGrey,
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -107,13 +150,6 @@ class _PlatformScreenState extends State<PlatformScreen> {
     );
   }
 
-  Widget _buildSegmentedControl() {
-    return _currentFactory.createSegmentedControl(
-      options: _options,
-      selectedOption: _selectedOption,
-      onSelected: (val) => setState(() => _selectedOption = val),
-    );
-  }
 
   Widget _buildSection(String title, Widget child) {
     return Column(
@@ -122,9 +158,9 @@ class _PlatformScreenState extends State<PlatformScreen> {
           title,
           style: const TextStyle(fontSize: 14, color: Colors.grey),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 12),
         child,
-        const SizedBox(height: 30),
+        const SizedBox(height: 8),
       ],
     );
   }
