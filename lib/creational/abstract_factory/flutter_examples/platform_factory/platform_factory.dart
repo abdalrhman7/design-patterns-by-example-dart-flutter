@@ -28,6 +28,37 @@ abstract class PlatformCheckbox extends StatelessWidget {
   });
 }
 
+// Abstract Product 3: PlatformIndicator
+abstract class PlatformIndicator extends StatelessWidget {
+  const PlatformIndicator({super.key});
+}
+
+// Abstract Product 4: PlatformSlider
+abstract class PlatformSlider extends StatelessWidget {
+  final double value;
+  final ValueChanged<double> onChanged;
+
+  const PlatformSlider({
+    super.key,
+    required this.value,
+    required this.onChanged,
+  });
+}
+
+// Abstract Product 5: PlatformSegmentedControl
+abstract class PlatformSegmentedControl extends StatelessWidget {
+  final List<String> options;
+  final String selectedOption;
+  final ValueChanged<String> onSelected;
+
+  const PlatformSegmentedControl({
+    super.key,
+    required this.options,
+    required this.selectedOption,
+    required this.onSelected,
+  });
+}
+
 // === Material (Android) Theme Concrete Products ===
 
 // 🔹 Material implementation of the Button
@@ -61,6 +92,54 @@ class MaterialCheckboxWidget extends PlatformCheckbox {
     return Checkbox(
       value: value,
       onChanged: onChanged,
+    );
+  }
+}
+
+class MaterialIndicatorWidget extends PlatformIndicator {
+  const MaterialIndicatorWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const CircularProgressIndicator();
+  }
+}
+
+class MaterialSliderWidget extends PlatformSlider {
+  const MaterialSliderWidget({
+    super.key,
+    required super.value,
+    required super.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Slider(
+      value: value,
+      onChanged: onChanged,
+    );
+  }
+}
+
+class MaterialSegmentedControlWidget extends PlatformSegmentedControl {
+  const MaterialSegmentedControlWidget({
+    super.key,
+    required super.options,
+    required super.selectedOption,
+    required super.onSelected,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SegmentedButton<String>(
+      segments: options
+          .map((opt) => ButtonSegment<String>(value: opt, label: Text(opt)))
+          .toList(),
+      selected: {selectedOption},
+      onSelectionChanged: (Set<String> selection) {
+        onSelected(selection.first);
+      },
+      multiSelectionEnabled: false,
     );
   }
 }
@@ -101,6 +180,54 @@ class CupertinoCheckboxWidget extends PlatformCheckbox {
   }
 }
 
+class CupertinoIndicatorWidget extends PlatformIndicator {
+  const CupertinoIndicatorWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const CupertinoActivityIndicator();
+  }
+}
+
+class CupertinoSliderWidget extends PlatformSlider {
+  const CupertinoSliderWidget({
+    super.key,
+    required super.value,
+    required super.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return CupertinoSlider(
+      value: value,
+      onChanged: onChanged,
+    );
+  }
+}
+
+class CupertinoSegmentedControlWidget extends PlatformSegmentedControl {
+  const CupertinoSegmentedControlWidget({
+    super.key,
+    required super.options,
+    required super.selectedOption,
+    required super.onSelected,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return CupertinoSegmentedControl<String>(
+      children: {
+        for (var opt in options) opt: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Text(opt),
+        ),
+      },
+      groupValue: selectedOption,
+      onValueChanged: onSelected,
+    );
+  }
+}
+
 // -------------------------------------------------------------
 
 // Abstract Factory: Widgets Factory
@@ -109,6 +236,13 @@ class CupertinoCheckboxWidget extends PlatformCheckbox {
 abstract class UIWidgetsFactory {
   PlatformButton createButton({required VoidCallback onPressed, required String text});
   PlatformCheckbox createCheckbox({required bool value, required ValueChanged<bool?> onChanged});
+  PlatformIndicator createIndicator();
+  PlatformSlider createSlider({required double value, required ValueChanged<double> onChanged});
+  PlatformSegmentedControl createSegmentedControl({
+    required List<String> options,
+    required String selectedOption,
+    required ValueChanged<String> onSelected,
+  });
 }
 
 // Concrete Factory 1: Material Widgets Factory
@@ -124,6 +258,27 @@ class MaterialWidgetsFactory implements UIWidgetsFactory {
   PlatformCheckbox createCheckbox({required bool value, required ValueChanged<bool?> onChanged}) {
     return MaterialCheckboxWidget(value: value, onChanged: onChanged);
   }
+
+  @override
+  PlatformIndicator createIndicator() => const MaterialIndicatorWidget();
+
+  @override
+  PlatformSlider createSlider({required double value, required ValueChanged<double> onChanged}) {
+    return MaterialSliderWidget(value: value, onChanged: onChanged);
+  }
+
+  @override
+  PlatformSegmentedControl createSegmentedControl({
+    required List<String> options,
+    required String selectedOption,
+    required ValueChanged<String> onSelected,
+  }) {
+    return MaterialSegmentedControlWidget(
+      options: options,
+      selectedOption: selectedOption,
+      onSelected: onSelected,
+    );
+  }
 }
 
 // Concrete Factory 2: Cupertino Widgets Factory
@@ -137,5 +292,26 @@ class CupertinoWidgetsFactory implements UIWidgetsFactory {
   @override
   PlatformCheckbox createCheckbox({required bool value, required ValueChanged<bool?> onChanged}) {
     return CupertinoCheckboxWidget(value: value, onChanged: onChanged);
+  }
+
+  @override
+  PlatformIndicator createIndicator() => const CupertinoIndicatorWidget();
+
+  @override
+  PlatformSlider createSlider({required double value, required ValueChanged<double> onChanged}) {
+    return CupertinoSliderWidget(value: value, onChanged: onChanged);
+  }
+
+  @override
+  PlatformSegmentedControl createSegmentedControl({
+    required List<String> options,
+    required String selectedOption,
+    required ValueChanged<String> onSelected,
+  }) {
+    return CupertinoSegmentedControlWidget(
+      options: options,
+      selectedOption: selectedOption,
+      onSelected: onSelected,
+    );
   }
 }
