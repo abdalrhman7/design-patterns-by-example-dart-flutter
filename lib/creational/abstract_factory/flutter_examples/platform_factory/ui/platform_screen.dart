@@ -34,26 +34,6 @@ class _PlatformScreenState extends State<PlatformScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final button = _currentFactory.createButton(
-      onPressed: () => ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Button Pressed!')),
-      ),
-      text: 'Platform Button',
-    );
-
-    final checkbox = _currentFactory.createCheckbox(
-      value: _checkboxValue,
-      onChanged: (val) => setState(() => _checkboxValue = val!),
-    );
-
-    final indicator = _currentFactory.createIndicator();
-
-    final slider = _currentFactory.createSlider(
-      value: _sliderValue,
-      onChanged: (val) => setState(() => _sliderValue = val),
-    );
-
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Abstract Factory: Platform Widgets'),
@@ -62,37 +42,76 @@ class _PlatformScreenState extends State<PlatformScreen> {
         padding: const EdgeInsets.all(24.0),
         child: Column(
           children: [
-            Text(
-              'Currently using: ${_isMaterial ? "Material (Android)" : "Cupertino (iOS)"}',
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('Material'),
-                Switch(value: _isMaterial, onChanged: _toggleFactory),
-                const Text('Cupertino'),
-              ],
-            ),
+            _buildHeader(),
             const Divider(height: 40),
             
-            _buildSection('Button', button),
-            _buildSection('Indicator', indicator),
-            _buildSection(
-              'Checkbox / Switch', 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text('Interaction: '),
-                  checkbox,
-                ],
-              ),
-            ),
-            _buildSection('Slider', slider),
+            _buildSection('Button', _buildButton()),
+            _buildSection('Indicator', _buildIndicator()),
+            _buildSection('Checkbox / Switch', _buildCheckbox()),
+            _buildSection('Slider', _buildSlider()),
+            _buildSection('Segmented Control', _buildSegmentedControl()),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildHeader() {
+    return Column(
+      children: [
+        Text(
+          'Currently using: ${_isMaterial ? "Material (Android)" : "Cupertino (iOS)"}',
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('Material'),
+            Switch(value: _isMaterial, onChanged: _toggleFactory),
+            const Text('Cupertino'),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildButton() {
+    return _currentFactory.createButton(
+      onPressed: () => ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Button Pressed!')),
+      ),
+      text: 'Platform Button',
+    );
+  }
+
+  Widget _buildCheckbox() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text('Interaction: '),
+        _currentFactory.createCheckbox(
+          value: _checkboxValue,
+          onChanged: (val) => setState(() => _checkboxValue = val!),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildIndicator() => _currentFactory.createIndicator();
+
+  Widget _buildSlider() {
+    return _currentFactory.createSlider(
+      value: _sliderValue,
+      onChanged: (val) => setState(() => _sliderValue = val),
+    );
+  }
+
+  Widget _buildSegmentedControl() {
+    return _currentFactory.createSegmentedControl(
+      options: _options,
+      selectedOption: _selectedOption,
+      onSelected: (val) => setState(() => _selectedOption = val),
     );
   }
 
