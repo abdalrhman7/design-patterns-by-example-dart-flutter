@@ -26,18 +26,3 @@ class TwentyFourHourFormat implements TimeFormatStrategy {
     return DateFormat('HH:mm').format(time);
   }
 }
-
-/// 🔹 Concrete Strategy 3: Relative Time (e.g., "2 minutes ago")
-/// Encapsulates logic to calculate difference from now.
-class RelativeTimeFormat implements TimeFormatStrategy {
-  @override
-  String format(DateTime time) {
-    final now = DateTime.now();
-    final diff = now.difference(time);
-
-    if (diff.inSeconds < 60) return 'Just now';
-    if (diff.inMinutes < 60) return '${diff.inMinutes} minutes ago';
-    if (diff.inHours < 24) return '${diff.inHours} hours ago';
-    return '${diff.inDays} days ago';
-  }
-}

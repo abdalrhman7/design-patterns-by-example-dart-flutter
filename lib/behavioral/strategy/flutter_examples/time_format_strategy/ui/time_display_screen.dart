@@ -16,21 +16,19 @@ class _TimeDisplayScreenState extends State<TimeDisplayScreen> {
   final List<TimeFormatStrategy> _strategies = [
     TwelveHourFormat(),
     TwentyFourHourFormat(),
-    RelativeTimeFormat(),
   ];
 
   /// Labels for each strategy (for the UI)
   final List<String> _labels = [
     '12-hour (AM/PM)',
     '24-hour',
-    'Relative time',
   ];
 
   /// Currently selected strategy index
   int _selected = 0;
 
-  /// Example time to display (1.5 hours ago)
-  final DateTime _exampleTime = DateTime.now().subtract(const Duration(minutes: 90));
+  /// Example time to display
+  final DateTime _exampleTime = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +64,7 @@ class _TimeDisplayScreenState extends State<TimeDisplayScreen> {
               description:
                   'Defines a family of algorithms, encapsulates each one, and makes them interchangeable at runtime.',
               exampleContext:
-                  'Users dynamically switch between 12-hour, 24-hour, and relative time formatting at runtime without changing the display widget code',
+                  'Users dynamically switch between 12-hour and 24-hour time formatting at runtime without changing the display widget code.',
             ),
           ],
         ),
