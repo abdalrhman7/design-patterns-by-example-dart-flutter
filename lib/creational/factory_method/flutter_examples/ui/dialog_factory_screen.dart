@@ -1,4 +1,5 @@
 import 'package:design_patterns_flutter/creational/factory_method/flutter_examples/dialog_factory_method.dart';
+import 'package:design_patterns_flutter/core/widgets/pattern_definition_card.dart';
 import 'package:flutter/material.dart';
 
 // —— Client Code — FactoryMethodDialogExample ——
@@ -68,6 +69,14 @@ class _DialogFactoryScreenState
               onPressed: () =>
                   currentManager.showDialog(context, _selectedDialogType),
               child: const Text("Show Dialog"),
+            ),
+            const SizedBox(height: 16),
+            const PatternDefinitionCard(
+              title: 'Factory Method Pattern',
+              description:
+                  'Defines an interface for creating objects, while letting subclasses decide which concrete class to instantiate.',
+              exampleContext:
+                  'AndroidDialogManager and IosDialogManager create platform-specific dialogs through the same API.',
             ),
           ],
         ),

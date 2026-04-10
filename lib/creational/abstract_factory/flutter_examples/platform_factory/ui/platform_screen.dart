@@ -1,4 +1,5 @@
 import 'package:design_patterns_flutter/creational/abstract_factory/flutter_examples/platform_factory/platform_factory.dart';
+import 'package:design_patterns_flutter/core/widgets/pattern_definition_card.dart';
 import 'package:flutter/material.dart';
 
 class PlatformScreen extends StatefulWidget {
@@ -48,53 +49,15 @@ class _PlatformScreenState extends State<PlatformScreen> {
             _buildSection('Checkbox / Switch', _buildCheckbox()),
             _buildSection('Slider', _buildSlider()),
             const Divider(height: 30),
-            _buildPatternDefinition(),
+            const PatternDefinitionCard(
+              title: 'Abstract Factory Pattern',
+              description:
+                  'Provides an interface for creating families of related objects without specifying their concrete classes.',
+              exampleContext:
+                  'It creates a full widget family (button, indicator, checkbox, slider) as Material or Cupertino at runtime.',
+            ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildPatternDefinition() {
-    return Container(
-      padding: const EdgeInsets.all(16.0),
-      decoration: BoxDecoration(
-        color: Colors.blueGrey.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.blueGrey.withOpacity(0.2)),
-      ),
-      child: const Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Icon(Icons.info_outline, color: Colors.blueGrey),
-              SizedBox(width: 8),
-              Text(
-                'Abstract Factory Pattern',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blueGrey,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 12),
-          Text(
-            'Provides an interface for creating families of related or dependent objects without specifying their concrete classes.',
-            style: TextStyle(fontSize: 14, height: 1.5),
-          ),
-          SizedBox(height: 8),
-          Text(
-            'In this example: It is used to create a suite of widgets (Button, Slider, etc.) that match the specific platform theme (Material or Cupertino) dynamically.',
-            style: TextStyle(
-              fontSize: 14,
-              fontStyle: FontStyle.italic,
-              color: Colors.blueGrey,
-            ),
-          ),
-        ],
       ),
     );
   }

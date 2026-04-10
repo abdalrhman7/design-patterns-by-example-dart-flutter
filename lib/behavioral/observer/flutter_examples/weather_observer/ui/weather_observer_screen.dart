@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:design_patterns_flutter/behavioral/observer/flutter_examples/weather_observer/weather_observer.dart';
+import 'package:design_patterns_flutter/core/widgets/pattern_definition_card.dart';
 import 'package:flutter/material.dart';
 
 class WeatherObserverScreen extends StatefulWidget {
@@ -56,7 +57,13 @@ class _WeatherObserverScreenState extends State<WeatherObserverScreen> {
               onPressed: _updateWeather,
               child: const Text('🔄 Update Weather'),
             ),
-            const SizedBox(height: 250),
+            const PatternDefinitionCard(
+              title: 'Observer Pattern',
+              description:
+                  'Defines a one-to-many dependency so when one object changes state, all dependents are notified automatically.',
+              exampleContext:
+                  'WeatherStation notifies temperature, humidity, and alert displays whenever measurements change.',
+            ),
           ],
         ),
       ),

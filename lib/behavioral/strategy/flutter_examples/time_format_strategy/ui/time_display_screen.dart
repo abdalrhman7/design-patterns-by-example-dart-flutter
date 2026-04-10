@@ -1,4 +1,5 @@
 import 'package:design_patterns_flutter/behavioral/strategy/flutter_examples/time_format_strategy/time_format_strategy.dart';
+import 'package:design_patterns_flutter/core/widgets/pattern_definition_card.dart';
 import 'package:flutter/material.dart';
 import 'formatted_time.dart';
 
@@ -60,6 +61,13 @@ class _TimeDisplayScreenState extends State<TimeDisplayScreen> {
                 onChanged: (val) => setState(() => _selected = val!),
               );
             }),
+            const PatternDefinitionCard(
+              title: 'Strategy Pattern',
+              description:
+                  'Defines a family of algorithms, encapsulates each one, and makes them interchangeable at runtime.',
+              exampleContext:
+                  'Users dynamically switch between 12-hour, 24-hour, and relative time formatting at runtime without changing the display widget code',
+            ),
           ],
         ),
       ),

@@ -1,3 +1,4 @@
+import 'package:design_patterns_flutter/core/widgets/pattern_definition_card.dart';
 import 'package:flutter/material.dart';
 import '../pizza_decorator.dart';
 
@@ -74,6 +75,13 @@ class _DecoratorPizzaScreenState extends State<DecoratorPizzaScreen> {
             Text("Total Price: \$${pizza.getPrice().toStringAsFixed(2)}",
                 style:
                     const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            const PatternDefinitionCard(
+              title: 'Decorator Pattern',
+              description:
+                  'Attaches additional responsibilities to an object dynamically without changing its base class.',
+              exampleContext:
+                  'Each topping wraps the pizza and adds behavior for description and total price.',
+            ),
           ],
         ),
       ),

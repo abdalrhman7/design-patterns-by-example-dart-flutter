@@ -1,4 +1,5 @@
 import 'package:design_patterns_flutter/creational/singletone/flutter_examples/counter_singletone.dart';
+import 'package:design_patterns_flutter/core/widgets/pattern_definition_card.dart';
 import 'package:flutter/material.dart';
 
 /// === HomePage ===
@@ -57,6 +58,13 @@ class _CounterFirstScreenState extends State<CounterFirstScreen> {
               },
               child: const Text('Go to Second Page'),
             ),
+            const PatternDefinitionCard(
+              title: 'Singleton Pattern',
+              description:
+                  'Ensures a class has only one instance and provides a global access point to it.',
+              exampleContext:
+                  'SingletonCounter preserves shared state across both screens, while NonSingletonCounter does not.',
+            ),
           ],
         ),
       ),
@@ -112,6 +120,13 @@ class _CounterSecondScreenState extends State<CounterSecondScreen> {
             ElevatedButton(
               onPressed: () => Navigator.pop(context),
               child: const Text('Back to Home'),
+            ),
+            const PatternDefinitionCard(
+              title: 'Singleton Pattern',
+              description:
+                  'Provides one shared instance so data can stay consistent across different parts of the app.',
+              exampleContext:
+                  'This screen reads the same SingletonCounter instance to show persistence after navigation.',
             ),
           ],
         ),

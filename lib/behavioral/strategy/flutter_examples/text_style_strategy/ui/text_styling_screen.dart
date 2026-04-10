@@ -1,5 +1,6 @@
 import 'package:design_patterns_flutter/behavioral/strategy/flutter_examples/text_style_strategy/text_style_strategy.dart';
 import 'package:design_patterns_flutter/behavioral/strategy/flutter_examples/text_style_strategy/ui/styled_text.dart';
+import 'package:design_patterns_flutter/core/widgets/pattern_definition_card.dart';
 import 'package:flutter/material.dart';
 
 
@@ -57,6 +58,13 @@ class _TextStylingScreenState extends State<TextStylingScreen> {
                 },
               );
             }),
+            const PatternDefinitionCard(
+              title: 'Strategy Pattern',
+              description:
+                  'Defines a family of algorithms, encapsulates each one, and makes them interchangeable at runtime.',
+              exampleContext:
+                  'Users dynamically switch between bold, italic, and accent color styles at runtime without changing the text display widget code.',
+            ),
           ],
         ),
       ),
