@@ -1,9 +1,3 @@
-# 🚀 Design Patterns in Dart & Flutter
-
-A comprehensive, hands-on guide to mastering **Gang of Four (GoF)** design patterns using the **Dart** language and **Flutter** framework. This repository is designed to bridge the gap between theoretical concepts and real-world application.
-
----
-
 ## 🧠 Why this project?
 
 Learning design patterns can be abstract and confusing. This project simplifies the learning curve by providing:
@@ -32,21 +26,21 @@ lib/
 
 ---
 
-## 🛠️ Implemented Patterns
+##  Implemented Patterns
 
-### 🏗️ Creational Patterns
+###  Creational Patterns
 | Pattern | Description | Status |
 |:--- |:--- |:---:|
 | **Abstract Factory** | Creating families of related objects. | ✅ |
 | **Factory Method** | Instantiating objects without specifying concrete classes. | ✅ |
 | **Singleton** | Ensuring a class has only one instance. | ✅ |
 
-### 🧱 Structural Patterns
+###  Structural Patterns
 | Pattern | Description | Status |
 |:--- |:--- |:---:|
 | **Decorator** | Adding responsibilities to objects dynamically. | ✅ |
 
-### 🎭 Behavioral Patterns
+###  Behavioral Patterns
 | Pattern | Description | Status |
 |:--- |:--- |:---:|
 | **Strategy** | Encapsulating interchangeable algorithms. | ✅ |
@@ -71,4 +65,10 @@ Every example is built with a focus on:
 2.  Examine the `without_pattern` code to identify the pain points.
 3.  Study the `with_pattern` refactor and the 🔹 comments explaining the principles.
 4.  Run the Flutter example to see the dynamic behavior.
+
+---
+
+## 📸 Screenshot
+
+<img width="1024" height="1536" alt="DesignPatterns" src="https://github.com/user-attachments/assets/be6af8a1-eccc-411d-a710-88fb4fc1be40" />
 
