@@ -29,22 +29,22 @@ lib/
 ##  Implemented Patterns
 
 ###  Creational Patterns
-| Pattern | Description | Status |
+| Pattern | Description 
 |:--- |:--- |:---:|
-| **Abstract Factory** | Creating families of related objects. | ✅ |
-| **Factory Method** | Instantiating objects without specifying concrete classes. | ✅ |
-| **Singleton** | Ensuring a class has only one instance. | ✅ |
+| **Abstract Factory** | Creating families of related objects.
+| **Factory Method** | Instantiating objects without specifying concrete classes.
+| **Singleton** | Ensuring a class has only one instance.
 
 ###  Structural Patterns
-| Pattern | Description | Status |
+| Pattern | Description 
 |:--- |:--- |:---:|
-| **Decorator** | Adding responsibilities to objects dynamically. | ✅ |
+| **Decorator** | Adding responsibilities to objects dynamically.
 
 ###  Behavioral Patterns
-| Pattern | Description | Status |
+| Pattern | Description 
 |:--- |:--- |:---:|
-| **Strategy** | Encapsulating interchangeable algorithms. | ✅ |
-| **Observer** | One-to-many dependency notification. | ✅ |
+| **Strategy** | Encapsulating interchangeable algorithms.
+| **Observer** | One-to-many dependency notification.
 
 ---
 
