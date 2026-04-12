@@ -1,6 +1,7 @@
 import 'package:design_patterns_flutter/structural/decorator/flutter_examples/pizza_decorator/ui/decorator_pizza_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:design_patterns_flutter/behavioral/command/flutter_examples/counter_undo/ui/counter_undo_screen.dart';
+import 'package:design_patterns_flutter/behavioral/command/flutter_examples/universal_remote/ui/universal_remote_screen.dart';
 import 'package:design_patterns_flutter/behavioral/strategy/flutter_examples/time_format_strategy/ui/time_display_screen.dart';
 import 'package:design_patterns_flutter/behavioral/strategy/flutter_examples/text_style_strategy/ui/text_styling_screen.dart';
 import 'package:design_patterns_flutter/creational/singletone/flutter_examples/ui/counter_singletone_screens.dart';
@@ -53,6 +54,11 @@ class HomePage extends StatelessWidget {
                     title: 'Example 1: Counter & Undo',
                     subtitle: 'Run +1 / -1 as commands and undo the last step.',
                     screen: const CounterUndoScreen(),
+                  ),
+                  _ExampleItem(
+                    title: 'Example 2: Universal Remote',
+                    subtitle: 'TV, fan, lights — many commands, one invoker + movie macro.',
+                    screen: const UniversalRemoteScreen(),
                   ),
                 ],
               ),
