@@ -29,6 +29,7 @@ class HomePage extends StatelessWidget {
           _buildCategorySection(
             context,
             'Behavioral Patterns',
+            'How objects talk to each other and share work—who does what, and in what order.',
             [
               _PatternItem(
                 name: 'Strategy Pattern',
@@ -79,6 +80,7 @@ class HomePage extends StatelessWidget {
           _buildCategorySection(
             context,
             'Creational Patterns',
+            'Ways to create objects without being tied to a specific constructor or concrete class',
             [
               _PatternItem(
                 name: 'Factory Method',
@@ -119,6 +121,7 @@ class HomePage extends StatelessWidget {
           _buildCategorySection(
             context,
             'Structural Patterns',
+            'Ways to combine classes or objects into larger structures—wrapping, adapting, or composing them cleanly',
             [
               _PatternItem(
                 name: 'Decorator Pattern',
@@ -138,19 +141,62 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildCategorySection(BuildContext context, String categoryName, List<_PatternItem> patterns) {
+  Widget _buildCategorySection(
+    BuildContext context,
+    String categoryName,
+    String categoryInfo,
+    List<_PatternItem> patterns,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 8, bottom: 8),
-          child: Text(
-            categoryName.toUpperCase(),
-            style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.indigo, letterSpacing: 1.2),
+          padding: const EdgeInsets.only(left: 2, right: 2, bottom: 4),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Text(
+                  categoryName.toUpperCase(),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.indigo,
+                    letterSpacing: 1.2,
+                  ),
+                ),
+              ),
+              IconButton(
+                icon: const Icon(Icons.info_outline, color: Colors.indigo),
+                tooltip: 'What is $categoryName?',
+                onPressed: () => _showCategoryInfoDialog(context, categoryName, categoryInfo),
+                padding: EdgeInsets.zero,
+                constraints: const BoxConstraints(minWidth: 40, minHeight: 40),
+              ),
+            ],
           ),
         ),
-        ...patterns.map((pattern) => _buildPatternExpansion(context, pattern)).toList(),
+        ...patterns.map((pattern) => _buildPatternExpansion(context, pattern)),
       ],
+    );
+  }
+
+  void _showCategoryInfoDialog(BuildContext context, String title, String body) {
+    showDialog<void>(
+      context: context,
+      builder: (dialogContext) {
+        return AlertDialog(
+          title: Text(title),
+          content: SingleChildScrollView(
+            child: Text(body, style: const TextStyle(height: 1.4)),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(dialogContext).pop(),
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
     );
   }
 
