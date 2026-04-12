@@ -1,5 +1,6 @@
 import 'package:design_patterns_flutter/structural/decorator/flutter_examples/pizza_decorator/ui/decorator_pizza_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:design_patterns_flutter/behavioral/command/flutter_examples/counter_undo/ui/counter_undo_screen.dart';
 import 'package:design_patterns_flutter/behavioral/strategy/flutter_examples/time_format_strategy/ui/time_display_screen.dart';
 import 'package:design_patterns_flutter/behavioral/strategy/flutter_examples/text_style_strategy/ui/text_styling_screen.dart';
 import 'package:design_patterns_flutter/creational/singletone/flutter_examples/ui/counter_singletone_screens.dart';
@@ -41,6 +42,17 @@ class HomePage extends StatelessWidget {
                     title: 'Example 2: Text Styling',
                     subtitle: 'Change text appearance (Bold, Italic, color).',
                     screen: const TextStylingScreen(),
+                  ),
+                ],
+              ),
+              _PatternItem(
+                name: 'Command Pattern',
+                description: 'Encapsulate requests as objects; queue, log, or undo them.',
+                examples: [
+                  _ExampleItem(
+                    title: 'Example 1: Counter & Undo',
+                    subtitle: 'Run +1 / -1 as commands and undo the last step.',
+                    screen: const CounterUndoScreen(),
                   ),
                 ],
               ),
