@@ -13,6 +13,7 @@ The **Command Pattern** is a behavioral design pattern that turns a request into
 - You want to **queue, log, or schedule** requests.
 - You want to replace **complex conditional logic** (`if` / `switch`) with objects.
 - You aim to follow **SOLID principles** (especially SRP, OCP, DIP).
+- You want clearer **separation of concerns**: *when* a request runs (invoker), *what* is requested (command), and *how* work is done (receiver) stay in different places.
 
 ---
 ## 🧱 Structure
@@ -49,13 +50,16 @@ The Invoker *composes* a command object and triggers it. This allows for dynamic
 ### 🔹 4. **Code to an interface, not an implementation**
 The Invoker depends on the `Command` interface, not a concrete class, making the system flexible and easy to extend.
 
+### 🔹 5. **Separation of concerns**
+The **Invoker** cares about triggering execution; each **Concrete Command** packages one request; the **Receiver** owns domain logic. Those roles are not mixed in one class, so each part is easier to read, test, and change independently.
+
 ---
 
 ## 🧱 SOLID Principles Applied
 
 | Principle | Description |
 |----------|-------------|
-| **S** - Single Responsibility | Separates the class that triggers the action from the class that performs the business logic. |
+| **S** - Single Responsibility | Separates the class that triggers the action from the class that performs the business logic — aligns with **separation of concerns** across invoker, command, and receiver. |
 | **O** - Open/Closed | New commands can be added without modifying existing Invokers, Receivers, or the Command interface. |
 | **L** - Liskov Substitution | All concrete commands can be substituted for one another through the shared Command interface. |
 | **I** - Interface Segregation | The Command interface is kept minimal and focused (e.g., just `execute` and `undo`). |
@@ -74,4 +78,4 @@ The Invoker depends on the `Command` interface, not a concrete class, making the
 
 ## 📌 Summary
 
-The Command Pattern converts requests into first-class objects. This promotes **loose coupling**, enables **undo/redo** functionality, and makes the code highly **extensible** and **testable**. By encapsulating actions, you can manage them as data—storing, queuing, or logging them as needed.
+The Command Pattern converts requests into first-class objects. This promotes **loose coupling**, clearer **separation of concerns** between triggering and doing work, enables **undo/redo** functionality, and makes the code highly **extensible** and **testable**. By encapsulating actions, you can manage them as data—storing, queuing, or logging them as needed.
