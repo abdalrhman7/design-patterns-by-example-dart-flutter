@@ -1,8 +1,8 @@
-# 📋 Command Pattern
+# 🎮 Command Pattern
 
 ## 🧠 Definition
 
-The **Command Pattern** is a behavioral design pattern that turns a request into a stand-alone object containing all information about the request. This object can be passed, stored, queued, logged, and supports reversible operations (undo/redo) without the caller needing to know how the work is done.
+The **Command Pattern** is a behavioral design pattern that turns a request into a stand-alone object that contains all information about the request. This transformation lets you pass requests as a method arguments, delay or queue a request's execution, and support undoable operations.
 
 ---
 
@@ -15,53 +15,51 @@ The **Command Pattern** is a behavioral design pattern that turns a request into
 - You aim to follow **SOLID principles** (especially SRP, OCP, DIP).
 
 ---
-
 ## 🧱 Structure
 
 Client
-  └── creates a ConcreteCommand and sets its receiver
+  └── creates and configures the ConcreteCommand, then assigns it to the Invoker
 
-Invoker
-  └── stores a Command and calls execute() (and optionally undo())
+Invoker (Sender)
+  └── holds a Command and triggers its execution
 
-Command (interface)
-  ├── execute()
-  └── optional: undo()
+Command (Interface)
+  └── defines the `execute()` and optionally `undo()` methods
 
-ConcreteCommand
-  └── forwards execute()/undo() to the Receiver
+Concrete Command
+└── implements the Command interface and delegates the request to the Receiver
 
-Receiver
-  └── knows how to perform the actual work
+Receiver (Worker)
+  └── contains the actual business logic to perform the task
 
 
 ---
 
 ## ✅ Key Principles in Action
 
-### 🔹 1. **Encapsulate a request as an object**
-The “what to do” and “with what” live inside the command, not spread across the invoker. That improves **separation of concerns** and makes behavior easy to reuse.
+### 🔹 1. **Decoupling**
+The sender (Invoker) doesn't know anything about the receiver or how the request is processed; it only knows the `Command` interface.
 
-### 🔹 2. **Decouple sender from doer**
-The invoker depends only on the **Command** abstraction, not on concrete receivers or low-level APIs. That reduces **tight coupling** and stabilizes high-level code.
+### 🔹 2. **Encapsulate what varies**
+Each command encapsulates a specific action and the data required for it, isolating the action's logic from its caller.
 
-### 🔹 3. **Single level of indirection for cross-cutting features**
-Because requests are objects, you can add **logging**, **validation**, **transactions**, **queues**, or **undo stacks** in one place without changing every call site.
+### 🔹 3. **Favor composition over inheritance**
+The Invoker *composes* a command object and triggers it. This allows for dynamic behavior changes at runtime.
 
 ### 🔹 4. **Code to an interface, not an implementation**
-Invoker and client work against `Command`, not specific receiver methods—aligned with **dependency inversion** and easier **unit testing** (mock commands or receivers).
+The Invoker depends on the `Command` interface, not a concrete class, making the system flexible and easy to extend.
 
 ---
 
 ## 🧱 SOLID Principles Applied
 
 | Principle | Description |
-|-----------|-------------|
-| **S** - Single Responsibility | Each command class represents **one** user intent or operation; the invoker only triggers execution; the receiver only performs domain actions. |
-| **O** - Open/Closed | New operations are added by **new command classes** without modifying existing invokers or receivers (when designed around a stable `Command` interface). |
-| **L** - Liskov Substitution | Any `Command` implementation can replace another where the contract is `execute()` / `undo()` (if present). |
-| **I** - Interface Segregation | Keep command interfaces minimal (e.g. split “executable” from “undoable” if not every command supports undo). |
-| **D** - Dependency Inversion | Invoker and high-level modules depend on the **Command** abstraction, not concrete receivers or UI details. |
+|----------|-------------|
+| **S** - Single Responsibility | Separates the class that triggers the action from the class that performs the business logic. |
+| **O** - Open/Closed | New commands can be added without modifying existing Invokers, Receivers, or the Command interface. |
+| **L** - Liskov Substitution | All concrete commands can be substituted for one another through the shared Command interface. |
+| **I** - Interface Segregation | The Command interface is kept minimal and focused (e.g., just `execute` and `undo`). |
+| **D** - Dependency Inversion | The Invoker depends on an abstraction (Command interface), not on a concrete Receiver or implementation. |
 
 ---
 
@@ -69,12 +67,11 @@ Invoker and client work against `Command`, not specific receiver methods—align
 
 - `core_examples/` → Console or Dart-only examples.
 - `flutter_examples/` → Interactive Flutter-based examples.
-- `without_pattern/` → Imperative, tightly coupled calls (e.g. UI or client directly invokes receiver methods).
-- `with_command/` → Refactored version using the Command Pattern (commands, invoker, receiver).
+- `without_pattern/` → Code with tight coupling and hardcoded logic.
+- `with_command/` → Refactored version using the Command Pattern properly.
 
 ---
 
 ## 📌 Summary
 
-The Command Pattern treats actions as first-class objects. That improves **separation of concerns**, weakens **tight coupling** between triggers and implementations, and opens the door to **undo**, **queues**, and clearer **SOLID**-friendly designs—especially in UIs and apps where the same operation must be triggered from many places or recorded for later.
-
+The Command Pattern converts requests into first-class objects. This promotes **loose coupling**, enables **undo/redo** functionality, and makes the code highly **extensible** and **testable**. By encapsulating actions, you can manage them as data—storing, queuing, or logging them as needed.
