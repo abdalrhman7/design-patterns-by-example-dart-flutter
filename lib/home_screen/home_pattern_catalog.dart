@@ -7,6 +7,7 @@ import 'package:design_patterns_flutter/creational/abstract_factory/flutter_exam
 import 'package:design_patterns_flutter/creational/factory_method/flutter_examples/ui/dialog_factory_screen.dart';
 import 'package:design_patterns_flutter/creational/singletone/flutter_examples/ui/counter_singletone_screens.dart';
 import 'package:design_patterns_flutter/home_screen/pattern_models.dart';
+import 'package:design_patterns_flutter/structural/adapter/flutter_examples/charger_adapter/ui/charger_adapter_screen.dart';
 import 'package:design_patterns_flutter/structural/adapter/flutter_examples/payment_gateway_adapter/ui/payment_gateway_adapter_screen.dart';
 import 'package:design_patterns_flutter/structural/decorator/flutter_examples/pizza_decorator/ui/decorator_pizza_screen.dart';
 
@@ -109,7 +110,12 @@ List<PatternCategory> buildHomePatternCatalog() {
           description: 'Convert one interface into another expected by existing client code.',
           examples: [
             const ExampleItem(
-              title: 'Example 1: Payment Gateway Adapter',
+              title: 'Example 1: Charger Port Adapter',
+              subtitle: 'USB-A charger cannot plug into USB-C phone without adapter.',
+              screen: ChargerAdapterScreen(),
+            ),
+            const ExampleItem(
+              title: 'Example 2: Payment Gateway Adapter',
               subtitle: 'Keep legacy checkout API while integrating QuickPay via adapter.',
               screen: PaymentGatewayAdapterScreen(),
             ),
