@@ -7,6 +7,7 @@ import 'package:design_patterns_flutter/creational/abstract_factory/flutter_exam
 import 'package:design_patterns_flutter/creational/factory_method/flutter_examples/ui/dialog_factory_screen.dart';
 import 'package:design_patterns_flutter/creational/singletone/flutter_examples/ui/counter_singletone_screens.dart';
 import 'package:design_patterns_flutter/home_screen/pattern_models.dart';
+import 'package:design_patterns_flutter/structural/adapter/flutter_examples/payment_gateway_adapter/ui/payment_gateway_adapter_screen.dart';
 import 'package:design_patterns_flutter/structural/decorator/flutter_examples/pizza_decorator/ui/decorator_pizza_screen.dart';
 
 List<PatternCategory> buildHomePatternCatalog() {
@@ -103,6 +104,17 @@ List<PatternCategory> buildHomePatternCatalog() {
       name: 'Structural Patterns',
       info: 'Ways to combine classes or objects into larger structures—wrapping, adapting, or composing them cleanly',
       patterns: [
+        PatternItem(
+          name: 'Adapter Pattern',
+          description: 'Convert one interface into another expected by existing client code.',
+          examples: [
+            const ExampleItem(
+              title: 'Example 1: Payment Gateway Adapter',
+              subtitle: 'Keep legacy checkout API while integrating QuickPay via adapter.',
+              screen: PaymentGatewayAdapterScreen(),
+            ),
+          ],
+        ),
         PatternItem(
           name: 'Decorator Pattern',
           description: 'Add behavior to objects dynamically.',
