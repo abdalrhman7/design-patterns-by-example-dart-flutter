@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
-
-// --- Subsystems (Simple & Straightforward) ---
+// === Subsystems (Independent Components with Single Responsibilities) ===
 
 class ImageCompressor {
+  // 🔹 Responsibility: Reduce image size before sending it over network
+  // This is a low-level operation that the client should NOT be aware of
   String compress(String imagePath) {
     print('Compressing image at $imagePath...');
     return '$imagePath (compressed)';
@@ -10,33 +10,47 @@ class ImageCompressor {
 }
 
 class ActionLogger {
+  // 🔹 Responsibility: Track system/user actions for debugging or analytics
+  // This is a cross-cutting concern and should not be handled by the UI
   void log(String message) {
     print('Log entry: $message');
   }
 }
 
 class SocialApi {
+  // 🔹 Responsibility: Handle communication with backend services
+  // Encapsulates network/API complexity from the rest of the system
   void upload(String data) {
     print('Uploading data to server: $data');
   }
 }
 
-// --- The Facade: Hides the steps above ---
+// -------------------------------------------------------------------------
+
+// Facade: The Simplified Interface
+// 🔹 Provides a single entry point for a complex multi-step workflow
+// 🔹 Hides coordination between compression, logging, and uploading
 
 class SocialShareFacade {
   final ImageCompressor _compressor = ImageCompressor();
   final ActionLogger _logger = ActionLogger();
   final SocialApi _api = SocialApi();
 
-  // 🔹 Simple Interface: Plain Dart method without any Flutter dependencies
+  // 🔹 High-level operation exposed to the client
+  // The client does NOT need to know:
+  // - how image compression works
+  // - when logging happens
+  // - how data is uploaded
   void sharePost(String imagePath) {
-    // Stage 1: Compress
+    print('--- 📤 Facade: Starting Share Workflow ---');
+
+    // Step 1: Prepare data (reduce size before sending)
     final compressedImage = _compressor.compress(imagePath);
 
-    // Stage 2: Log
+    // Step 2: Track action (for monitoring/debugging)
     _logger.log('User shared $compressedImage');
 
-    // Stage 3: Upload
+    // Step 3: Send to remote server
     _api.upload(compressedImage);
   }
 }
