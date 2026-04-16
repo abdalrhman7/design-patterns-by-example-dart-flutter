@@ -10,6 +10,7 @@ import 'package:design_patterns_flutter/home_screen/pattern_models.dart';
 import 'package:design_patterns_flutter/structural/adapter/flutter_examples/charger_adapter/ui/charger_adapter_screen.dart';
 import 'package:design_patterns_flutter/structural/adapter/flutter_examples/payment_gateway_adapter/ui/payment_gateway_adapter_screen.dart';
 import 'package:design_patterns_flutter/structural/decorator/flutter_examples/pizza_decorator/ui/decorator_pizza_screen.dart';
+import 'package:design_patterns_flutter/structural/facade/flutter_examples/travel_booking/ui/travel_booking_screen.dart';
 
 List<PatternCategory> buildHomePatternCatalog() {
   return [
@@ -138,6 +139,17 @@ List<PatternCategory> buildHomePatternCatalog() {
               title: 'Example 1: Pizza Ordering',
               subtitle: 'Layering toppings at runtime.',
               screen: DecoratorPizzaScreen(),
+            ),
+          ],
+        ),
+        PatternItem(
+          name: 'Facade Pattern',
+          description: 'Provide a simplified interface to a complex system.',
+          examples: [
+            const ExampleItem(
+              title: 'Example 1: Travel Booking Package',
+              subtitle: 'One-click luxury trip booking (Flights, Hotels, Cars, Insurance).',
+              screen: TravelBookingScreen(),
             ),
           ],
         ),
