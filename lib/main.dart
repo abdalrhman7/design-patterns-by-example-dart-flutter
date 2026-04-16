@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Design Patterns Flutter',
+      title: 'Design Patterns Explorer',
       home: const HomePage(),
     );
   }
