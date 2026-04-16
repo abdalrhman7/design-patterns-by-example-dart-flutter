@@ -11,20 +11,7 @@ class SocialShareScreen extends StatefulWidget {
 
 class _SocialShareScreenState extends State<SocialShareScreen> {
   final SocialShareFacade _facade = SocialShareFacade();
-
-  @override
-  void initState() {
-    super.initState();
-    _facade.addListener(() {
-      if (mounted) setState(() {});
-    });
-  }
-
-  @override
-  void dispose() {
-    _facade.dispose();
-    super.dispose();
-  }
+  String _status = 'Ready to share';
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +41,7 @@ class _SocialShareScreenState extends State<SocialShareScreen> {
                   const Icon(Icons.image, size: 80, color: Colors.blueGrey),
                   const SizedBox(height: 20),
                   Text(
-                    _facade.lastStatus,
+                    _status,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       fontSize: 18,
@@ -71,7 +58,13 @@ class _SocialShareScreenState extends State<SocialShareScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton.icon(
-                  onPressed: () => _facade.sharePost('my_photo.jpg'),
+                  onPressed: () {
+                    // Update state in UI, call Facade for logic
+                    _facade.sharePost('my_photo.jpg');
+                    setState(() {
+                      _status = 'Post shared successfully!';
+                    });
+                  },
                   icon: const Icon(Icons.share),
                   label: const Text('Quick Share'),
                   style: ElevatedButton.styleFrom(
@@ -81,7 +74,11 @@ class _SocialShareScreenState extends State<SocialShareScreen> {
                 ),
                 const SizedBox(width: 16),
                 TextButton(
-                  onPressed: () => _facade.reset(),
+                  onPressed: () {
+                    setState(() {
+                      _status = 'Ready to share';
+                    });
+                  },
                   child: const Text('Reset'),
                 ),
               ],
