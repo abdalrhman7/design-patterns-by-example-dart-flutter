@@ -15,7 +15,8 @@ List<PatternCategory> buildHomePatternCatalog() {
   return [
     PatternCategory(
       name: 'Behavioral Patterns',
-      info: 'How objects talk to each other and share work—who does what, and in what order.',
+      info:
+          'How objects talk to each other and share work—who does what, and in what order.',
       patterns: [
         PatternItem(
           name: 'Strategy Pattern',
@@ -35,7 +36,8 @@ List<PatternCategory> buildHomePatternCatalog() {
         ),
         PatternItem(
           name: 'Command Pattern',
-          description: 'Encapsulate requests as objects; queue, log, or undo them.',
+          description:
+              'Encapsulate requests as objects; queue, log, or undo them.',
           examples: [
             const ExampleItem(
               title: 'Example 1: Counter & Undo',
@@ -44,7 +46,8 @@ List<PatternCategory> buildHomePatternCatalog() {
             ),
             const ExampleItem(
               title: 'Example 2: Universal Remote',
-              subtitle: 'TV, fan, lights — many commands, one invoker + movie macro.',
+              subtitle:
+                  'TV, fan, lights — many commands, one invoker + movie macro.',
               screen: UniversalRemoteScreen(),
             ),
           ],
@@ -64,7 +67,8 @@ List<PatternCategory> buildHomePatternCatalog() {
     ),
     PatternCategory(
       name: 'Creational Patterns',
-      info: 'Ways to create objects without being tied to a specific constructor or concrete class',
+      info:
+          'Ways to create objects without being tied to a specific constructor or concrete class',
       patterns: [
         PatternItem(
           name: 'Factory Method',
@@ -90,7 +94,8 @@ List<PatternCategory> buildHomePatternCatalog() {
         ),
         PatternItem(
           name: 'Abstract Factory',
-          description: 'Create families of related objects without specifying concrete classes.',
+          description:
+              'Create families of related objects without specifying concrete classes.',
           examples: [
             const ExampleItem(
               title: 'Example 1: Platform UI Widgets',
@@ -103,20 +108,24 @@ List<PatternCategory> buildHomePatternCatalog() {
     ),
     PatternCategory(
       name: 'Structural Patterns',
-      info: 'Ways to combine classes or objects into larger structures—wrapping, adapting, or composing them cleanly',
+      info:
+          'Ways to combine classes or objects into larger structures—wrapping, adapting, or composing them cleanly',
       patterns: [
         PatternItem(
           name: 'Adapter Pattern',
-          description: 'Convert one interface into another expected by existing client code.',
+          description:
+              'Convert one interface into another expected by existing client code.',
           examples: [
             const ExampleItem(
               title: 'Example 1: Charger Port Adapter',
-              subtitle: 'USB-A charger cannot plug into USB-C phone without adapter.',
+              subtitle:
+                  'USB-A charger cannot plug into USB-C phone without adapter.',
               screen: ChargerAdapterScreen(),
             ),
             const ExampleItem(
               title: 'Example 2: Payment Gateway Adapter',
-              subtitle: 'Keep legacy checkout API while integrating QuickPay via adapter.',
+              subtitle:
+                  'Keep legacy checkout API while integrating QuickPay via adapter.',
               screen: PaymentGatewayAdapterScreen(),
             ),
           ],
