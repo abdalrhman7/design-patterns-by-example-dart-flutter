@@ -38,13 +38,17 @@ lib/
 ###  Structural Patterns
 | Pattern | Description 
 |:--- |:--- |:---:|
+| **Adapter** | Converting an interface into another expected by clients.
 | **Decorator** | Adding responsibilities to objects dynamically.
+| **Facade** | Providing a simplified interface to a complex system.
 
 ###  Behavioral Patterns
 | Pattern | Description 
 |:--- |:--- |:---:|
+| **Command** | Encapsulating a request as an object.
 | **Strategy** | Encapsulating interchangeable algorithms.
 | **Observer** | One-to-many dependency notification.
+| **Template Method** | Defining an algorithm's skeleton in a superclass.
 
 ---
 
