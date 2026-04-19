@@ -17,12 +17,13 @@ The **Template Method Pattern** is a behavioral design pattern that defines the 
 ## 🧱 Structure
 
 Abstract Class (Base)
-  ├── defines the `templateMethod()` (the skeleton)
-  ├── implements common steps
-  └── declares abstract methods or hooks for subclasses
+  ├── Defines the `templateMethod()` (the algorithm skeleton)
+  ├── Implements **Common Steps** (logic shared by all)
+  ├── Declares **Abstract Methods** (steps that MUST be implemented by subclasses)
+  └── Declares **Hooks** (optional steps with default/empty implementation)
 
 Concrete Class (Subclass)
-  └── implements or overrides specific steps of the algorithm
+  └── Implements abstract steps and optionally overrides hooks
 
 
 ---
@@ -33,13 +34,16 @@ Concrete Class (Subclass)
 "Don't call us, we'll call you." The base class controls the algorithm's flow and calls the methods implemented in the subclasses at the right time.
 
 ### 🔹 2. **Encapsulate what varies**
-The invariant parts of the algorithm are kept in the base class, while the variant parts (steps that change) are delegated to subclasses.
+The invariant parts (steps that never change) stay in the base class, while variant parts (individual steps) are delegated to subclasses.
 
-### 🔹 3. **Code Reusability**
-By moving common logic to the superclass, we reduce redundancy and make the codebase easier to maintain.
+### 🔹 3. **Hooks (Optional Extension)**
+Hooks are methods with a default (often empty) implementation in the base class. They allow subclasses to "hook into" the algorithm at specific points **optionally**, without being forced to override them if not needed.
 
-### 🔹 4. **Fixed Algorithm Skeleton**
-The structure of the algorithm remains stable and protected in the base class, ensuring consistency across all implementations.
+### 🔹 4. **Code Reusability**
+Common logic is written once in the superclass, preventing "code rot" and making maintenance easier across all variations.
+
+### 🔹 5. **Fixed Algorithm Skeleton**
+The template method is usually marked as `final` (or equivalent) to ensure subclasses can't change the execution order of the steps.
 
 ---
 
