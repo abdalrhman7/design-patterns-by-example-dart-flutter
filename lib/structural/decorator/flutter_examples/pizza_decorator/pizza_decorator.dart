@@ -1,6 +1,5 @@
 // Flutter Decorator Pattern Example with UI and Clean Refactor
 
-import 'package:flutter/material.dart';
 
 // === Component Interface ===
 // 🔹 Defines the **abstraction** for all pizza types (base or decorated).

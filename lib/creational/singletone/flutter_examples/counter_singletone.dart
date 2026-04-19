@@ -1,6 +1,5 @@
 // Flutter UI Example: Demonstrating Singleton vs Non-Singleton
 
-import 'package:flutter/material.dart';
 
 /// === SingletonCounter ===
 /// 🔒 Ensures a single shared instance across the app.
