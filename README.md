@@ -46,8 +46,9 @@ lib/
 | Pattern | Description 
 |:--- |:--- |:---:|
 | **Command** | Encapsulating a request as an object.
-| **Strategy** | Encapsulating interchangeable algorithms.
+| **Iterator** | Accessing elements of a collection sequentially without exposing its representation.
 | **Observer** | One-to-many dependency notification.
+| **Strategy** | Encapsulating interchangeable algorithms.
 | **Template Method** | Defining an algorithm's skeleton in a superclass.
 
 ---
