@@ -19,14 +19,17 @@ class HomePage extends StatelessWidget {
         foregroundColor: Colors.white,
         elevation: 4,
       ),
-      body: ListView(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-        children: [
-          for (var i = 0; i < _categories.length; i++) ...[
-            PatternCategorySection(category: _categories[i]),
-            if (i < _categories.length - 1) const SizedBox(height: 20),
+      body: SafeArea(
+        top: false,
+        child: ListView(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+          children: [
+            for (var i = 0; i < _categories.length; i++) ...[
+              PatternCategorySection(category: _categories[i]),
+              if (i < _categories.length - 1) const SizedBox(height: 20),
+            ],
           ],
-        ],
+        ),
       ),
     );
   }
