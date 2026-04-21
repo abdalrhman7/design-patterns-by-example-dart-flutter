@@ -50,7 +50,7 @@ class _CompositeFileSystemScreenState extends State<CompositeFileSystemScreen> {
         children: [
           Expanded(
             child: ListView(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.only(top: 16 , right: 16 , left: 16 , bottom: 8 ),
               children: [
                 Card(
                   elevation: 4,
@@ -67,7 +67,7 @@ class _CompositeFileSystemScreenState extends State<CompositeFileSystemScreen> {
           ),
           
           const Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: EdgeInsets.only(bottom: 16 , right: 16 , left: 16 ),
             child: PatternDefinitionCard(
               title: 'Composite Pattern',
               description: 'Compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions uniformly.',
