@@ -14,6 +14,7 @@ import 'package:design_patterns_flutter/behavioral/iterator/flutter_examples/tim
 import 'package:design_patterns_flutter/structural/decorator/flutter_examples/pizza_decorator/ui/decorator_pizza_screen.dart';
 import 'package:design_patterns_flutter/structural/facade/flutter_examples/social_share/ui/social_share_screen.dart';
 import 'package:design_patterns_flutter/structural/facade/flutter_examples/travel_booking/ui/travel_booking_screen.dart';
+import 'package:design_patterns_flutter/structural/composite/flutter_examples/file_system/ui/composite_file_system_screen.dart';
 
 List<PatternCategory> buildHomePatternCatalog() {
   return [
@@ -181,6 +182,17 @@ List<PatternCategory> buildHomePatternCatalog() {
               title: 'Example 2: Simple Social Share',
               subtitle: 'A clean demonstration of coordinating internal subsystems.',
               screen: SocialShareScreen(),
+            ),
+          ],
+        ),
+        PatternItem(
+          name: 'Composite Pattern',
+          description: 'Compose objects into tree structures to represent part-whole hierarchies.',
+          examples: [
+            const ExampleItem(
+              title: 'Example 1: File System Explorer',
+              subtitle: 'Recursively rendering folders and files with uniform treatment.',
+              screen: CompositeFileSystemScreen(),
             ),
           ],
         ),
