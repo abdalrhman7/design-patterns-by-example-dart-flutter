@@ -11,6 +11,7 @@ import 'package:design_patterns_flutter/structural/adapter/flutter_examples/char
 import 'package:design_patterns_flutter/structural/adapter/flutter_examples/payment_gateway_adapter/ui/payment_gateway_adapter_screen.dart';
 import 'package:design_patterns_flutter/behavioral/template_method/flutter_examples/media_uploader/ui/template_method_screen.dart';
 import 'package:design_patterns_flutter/behavioral/iterator/flutter_examples/timeline_stepper/ui/timeline_iterator_screen.dart';
+import 'package:design_patterns_flutter/behavioral/state/flutter_examples/coffee_machine/ui/coffee_machine_screen.dart';
 import 'package:design_patterns_flutter/structural/decorator/flutter_examples/pizza_decorator/ui/decorator_pizza_screen.dart';
 import 'package:design_patterns_flutter/structural/facade/flutter_examples/social_share/ui/social_share_screen.dart';
 import 'package:design_patterns_flutter/structural/facade/flutter_examples/travel_booking/ui/travel_booking_screen.dart';
@@ -88,6 +89,17 @@ List<PatternCategory> buildHomePatternCatalog() {
               title: 'Example 1: Timeline Stepper',
               subtitle: 'Iterating explicitly through a user milestone timeline.',
               screen: IteratorTimelineScreen(),
+            ),
+          ],
+        ),
+        PatternItem(
+          name: 'State Pattern',
+          description: 'Alter an object\'s behavior when its internal state changes.',
+          examples: [
+            const ExampleItem(
+              title: 'Example 1: Smart Coffee Machine',
+              subtitle: 'A vending machine demonstrating behavioral rules changing by state.',
+              screen: CoffeeMachineScreen(),
             ),
           ],
         ),
