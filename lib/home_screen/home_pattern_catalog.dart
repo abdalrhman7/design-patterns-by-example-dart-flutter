@@ -16,6 +16,7 @@ import 'package:design_patterns_flutter/structural/decorator/flutter_examples/pi
 import 'package:design_patterns_flutter/structural/facade/flutter_examples/social_share/ui/social_share_screen.dart';
 import 'package:design_patterns_flutter/structural/facade/flutter_examples/travel_booking/ui/travel_booking_screen.dart';
 import 'package:design_patterns_flutter/structural/composite/flutter_examples/file_system/ui/composite_file_system_screen.dart';
+import 'package:design_patterns_flutter/structural/proxy/flutter_examples/secure_vault/ui/vault_screen.dart';
 
 List<PatternCategory> buildHomePatternCatalog() {
   return [
@@ -167,6 +168,17 @@ List<PatternCategory> buildHomePatternCatalog() {
               subtitle:
                   'Keep legacy checkout API while integrating QuickPay via adapter.',
               screen: PaymentGatewayAdapterScreen(),
+            ),
+          ],
+        ),
+        PatternItem(
+          name: 'Proxy Pattern',
+          description: 'Provide a surrogate or placeholder for another object to control access to it.',
+          examples: [
+            const ExampleItem(
+              title: 'Example 1: Secure Document Vault',
+              subtitle: 'A protection proxy that intercepts unauthorized access and lazy-loads content.',
+              screen: SecureVaultScreen(),
             ),
           ],
         ),
