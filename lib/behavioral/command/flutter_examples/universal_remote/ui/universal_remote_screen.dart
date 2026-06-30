@@ -35,99 +35,102 @@ class _UniversalRemoteScreenState extends State<UniversalRemoteScreen> {
 
     return Scaffold(
       appBar: AppBar(title: const Text('Command Pattern: Universal Remote')),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          Text('Device status', style: theme.textTheme.titleMedium),
-          const SizedBox(height: 8),
-          _DeviceStatusCard(
-            icon: Icons.tv,
-            title: 'TV',
-            subtitle: _tv.isOn ? 'On · Channel ${_tv.channel}' : 'Off',
-            color: _tv.isOn ? Colors.green.shade700 : theme.colorScheme.outline,
-          ),
-          _DeviceStatusCard(
-            icon: Icons.mode_fan_off_outlined,
-            title: 'Fan',
-            subtitle: _fan.speed == 0 ? 'Off' : 'Speed ${_fan.speed} / 3',
-            color: _fan.speed > 0 ? Colors.blue.shade700 : theme.colorScheme.outline,
-          ),
-          _DeviceStatusCard(
-            icon: Icons.light_rounded,
-            title: 'Lights',
-            subtitle: '${_lights.brightness}% brightness',
-            color: Colors.amber.shade800,
-          ),
-          const SizedBox(height: 20),
-          Text('Remote', style: theme.textTheme.titleMedium),
-          const SizedBox(height: 4),
-          Text(
-            'Each control sends a different [RemoteCommand]. The invoker never branches on device type.',
-            style: theme.textTheme.bodySmall?.copyWith(
-              color: theme.colorScheme.onSurfaceVariant,
+      body: SafeArea(
+        top: false,
+        child: ListView(
+          padding: const EdgeInsets.all(16),
+          children: [
+            Text('Device status', style: theme.textTheme.titleMedium),
+            const SizedBox(height: 8),
+            _DeviceStatusCard(
+              icon: Icons.tv,
+              title: 'TV',
+              subtitle: _tv.isOn ? 'On · Channel ${_tv.channel}' : 'Off',
+              color: _tv.isOn ? Colors.green.shade700 : theme.colorScheme.outline,
             ),
-          ),
-          const SizedBox(height: 12),
-          Wrap(
-            spacing: 8,
-            runSpacing: 8,
-            children: [
-              _RemoteChip(
-                label: 'TV On',
-                icon: Icons.power,
-                onPressed: () => _press(TvPowerOnCommand(_tv)),
+            _DeviceStatusCard(
+              icon: Icons.mode_fan_off_outlined,
+              title: 'Fan',
+              subtitle: _fan.speed == 0 ? 'Off' : 'Speed ${_fan.speed} / 3',
+              color: _fan.speed > 0 ? Colors.blue.shade700 : theme.colorScheme.outline,
+            ),
+            _DeviceStatusCard(
+              icon: Icons.light_rounded,
+              title: 'Lights',
+              subtitle: '${_lights.brightness}% brightness',
+              color: Colors.amber.shade800,
+            ),
+            const SizedBox(height: 20),
+            Text('Remote', style: theme.textTheme.titleMedium),
+            const SizedBox(height: 4),
+            Text(
+              'Each control sends a different [RemoteCommand]. The invoker never branches on device type.',
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
               ),
-              _RemoteChip(
-                label: 'TV Off',
-                icon: Icons.power_off,
-                onPressed: () => _press(TvPowerOffCommand(_tv)),
-              ),
-              _RemoteChip(
-                label: 'CH+',
-                icon: Icons.skip_next,
-                onPressed: () => _press(TvChannelUpCommand(_tv)),
-              ),
-              _RemoteChip(
-                label: 'CH−',
-                icon: Icons.skip_previous,
-                onPressed: () => _press(TvChannelDownCommand(_tv)),
-              ),
-              _RemoteChip(
-                label: 'Fan +',
-                icon: Icons.add,
-                onPressed: () => _press(FanSpeedUpCommand(_fan)),
-              ),
-              _RemoteChip(
-                label: 'Fan −',
-                icon: Icons.remove,
-                onPressed: () => _press(FanSpeedDownCommand(_fan)),
-              ),
-              _RemoteChip(
-                label: 'Light +',
-                icon: Icons.light_mode_outlined,
-                onPressed: () => _press(LightsBrighterCommand(_lights)),
-              ),
-              _RemoteChip(
-                label: 'Light −',
-                icon: Icons.dark_mode_outlined,
-                onPressed: () => _press(LightsDimmerCommand(_lights)),
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          FilledButton.icon(
-            onPressed: () => _press(_movieNightMacro),
-            icon: const Icon(Icons.local_movies_outlined),
-            label: const Text('Movie night (macro)'),
-          ),
-          const PatternDefinitionCard(
-            title: 'Command Pattern',
-            description:
-                'Encapsulates requests as objects so one invoker can drive many receivers without giant if/switch trees.',
-            exampleContext:
-                'TV, fan, and lights each have their own commands. “Movie night” is a MacroCommand that runs several commands in order—new buttons or scenes are new classes, not edits to the remote.',
-          ),
-        ],
+            ),
+            const SizedBox(height: 12),
+            Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              children: [
+                _RemoteChip(
+                  label: 'TV On',
+                  icon: Icons.power,
+                  onPressed: () => _press(TvPowerOnCommand(_tv)),
+                ),
+                _RemoteChip(
+                  label: 'TV Off',
+                  icon: Icons.power_off,
+                  onPressed: () => _press(TvPowerOffCommand(_tv)),
+                ),
+                _RemoteChip(
+                  label: 'CH+',
+                  icon: Icons.skip_next,
+                  onPressed: () => _press(TvChannelUpCommand(_tv)),
+                ),
+                _RemoteChip(
+                  label: 'CH−',
+                  icon: Icons.skip_previous,
+                  onPressed: () => _press(TvChannelDownCommand(_tv)),
+                ),
+                _RemoteChip(
+                  label: 'Fan +',
+                  icon: Icons.add,
+                  onPressed: () => _press(FanSpeedUpCommand(_fan)),
+                ),
+                _RemoteChip(
+                  label: 'Fan −',
+                  icon: Icons.remove,
+                  onPressed: () => _press(FanSpeedDownCommand(_fan)),
+                ),
+                _RemoteChip(
+                  label: 'Light +',
+                  icon: Icons.light_mode_outlined,
+                  onPressed: () => _press(LightsBrighterCommand(_lights)),
+                ),
+                _RemoteChip(
+                  label: 'Light −',
+                  icon: Icons.dark_mode_outlined,
+                  onPressed: () => _press(LightsDimmerCommand(_lights)),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            FilledButton.icon(
+              onPressed: () => _press(_movieNightMacro),
+              icon: const Icon(Icons.local_movies_outlined),
+              label: const Text('Movie night (macro)'),
+            ),
+            const PatternDefinitionCard(
+              title: 'Command Pattern',
+              description:
+                  'Encapsulates requests as objects so one invoker can drive many receivers without giant if/switch trees.',
+              exampleContext:
+                  'TV, fan, and lights each have their own commands. “Movie night” is a MacroCommand that runs several commands in order—new buttons or scenes are new classes, not edits to the remote.',
+            ),
+          ],
+        ),
       ),
     );
   }

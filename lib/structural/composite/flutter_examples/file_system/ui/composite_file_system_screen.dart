@@ -46,35 +46,38 @@ class _CompositeFileSystemScreenState extends State<CompositeFileSystemScreen> {
       appBar: AppBar(
         title: const Text('Composite Pattern Demo'),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView(
-              padding: EdgeInsets.only(top: 16 , right: 16 , left: 16 , bottom: 8 ),
-              children: [
-                Card(
-                  elevation: 4,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    // 🔹 The Magic Call: We treat the entire complex tree as if 
-                    // it were a single widget. The Composite Pattern handles the rest!
-                    child: _rootDirectory.buildWidget(context),
+      body: SafeArea(
+        top: false,
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.only(top: 16 , right: 16 , left: 16 , bottom: 8 ),
+                children: [
+                  Card(
+                    elevation: 4,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      // 🔹 The Magic Call: We treat the entire complex tree as if 
+                      // it were a single widget. The Composite Pattern handles the rest!
+                      child: _rootDirectory.buildWidget(context),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          
-          const Padding(
-            padding: EdgeInsets.only(bottom: 16 , right: 16 , left: 16 ),
-            child: PatternDefinitionCard(
-              title: 'Composite Pattern',
-              description: 'Compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions uniformly.',
-              exampleContext: 'The entire file system—folders and files—is rendered and behaves consistently as a single structure. Expanding folders, displaying nested content, and calculating total sizes all happen seamlessly, even with deeply nested items. This demonstrates how both individual elements and grouped elements are handled uniformly.',
+            
+            const Padding(
+              padding: EdgeInsets.only(bottom: 16 , right: 16 , left: 16 ),
+              child: PatternDefinitionCard(
+                title: 'Composite Pattern',
+                description: 'Compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions uniformly.',
+                exampleContext: 'The entire file system—folders and files—is rendered and behaves consistently as a single structure. Expanding folders, displaying nested content, and calculating total sizes all happen seamlessly, even with deeply nested items. This demonstrates how both individual elements and grouped elements are handled uniformly.',
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

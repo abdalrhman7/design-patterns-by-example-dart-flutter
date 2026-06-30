@@ -49,28 +49,31 @@ class _IteratorTimelineScreenState extends State<IteratorTimelineScreen> {
 
     return Scaffold(
       appBar: AppBar(title: const Text('Iterator Pattern Demo')),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(height: 24),
-            _buildProgressIndicator(),
-            const SizedBox(height: 24),
-
-            // The Main Display Area
-               _buildPostCard(currentPost),
-
-            // The Navigation Controls
-            _buildControls(),
-
-            const Padding(
-              padding: EdgeInsets.only(left : 16 , right : 16 , bottom: 16 ),
-              child: PatternDefinitionCard(
-                title: 'Iterator Pattern',
-                description: 'Allows sequential access to elements of an aggregate object without exposing its underlying internal representation.',
-                exampleContext: 'The UI acts purely as a client calling `iterator.next()`, `previous()`, and `current()`. It has ZERO idea if the timeline is backed by an Array, a Database connection, or a Linked List. The Concrete Iterator completely encapsulates the complex cursor index logic.',
+      body: SafeArea(
+        top: false,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(height: 24),
+              _buildProgressIndicator(),
+              const SizedBox(height: 24),
+  
+              // The Main Display Area
+                 _buildPostCard(currentPost),
+  
+              // The Navigation Controls
+              _buildControls(),
+  
+              const Padding(
+                padding: EdgeInsets.only(left : 16 , right : 16 , bottom: 16 ),
+                child: PatternDefinitionCard(
+                  title: 'Iterator Pattern',
+                  description: 'Allows sequential access to elements of an aggregate object without exposing its underlying internal representation.',
+                  exampleContext: 'The UI acts purely as a client calling `iterator.next()`, `previous()`, and `current()`. It has ZERO idea if the timeline is backed by an Array, a Database connection, or a Linked List. The Concrete Iterator completely encapsulates the complex cursor index logic.',
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

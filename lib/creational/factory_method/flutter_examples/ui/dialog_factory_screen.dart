@@ -31,54 +31,57 @@ class _DialogFactoryScreenState
 
     return Scaffold(
       appBar: AppBar(title: const Text("Factory Method Dialog Example")),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            DropdownButton<int>(
-              value: _selectedPlatform,
-              items: const [
-                DropdownMenuItem(value: 0, child: Text("Android")),
-                DropdownMenuItem(value: 1, child: Text("iOS")),
-              ],
-              onChanged: (index) {
-                if (index != null) {
-                  setState(() {
-                    _selectedPlatform = index;
-                  });
-                }
-              },
-            ),
-            DropdownButton<String>(
-              value: _selectedDialogType,
-              items: const [
-                DropdownMenuItem(value: 'alert', child: Text("Alert Dialog")),
-                DropdownMenuItem(
-                    value: 'confirm', child: Text("Confirm Dialog")),
-              ],
-              onChanged: (type) {
-                if (type != null) {
-                  setState(() {
-                    _selectedDialogType = type;
-                  });
-                }
-              },
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () =>
-                  currentManager.showDialog(context, _selectedDialogType),
-              child: const Text("Show Dialog"),
-            ),
-            const SizedBox(height: 16),
-            const PatternDefinitionCard(
-              title: 'Factory Method Pattern',
-              description:
-                  'Defines an interface for creating objects, while letting subclasses decide which concrete class to instantiate.',
-              exampleContext:
-                  'AndroidDialogManager and IosDialogManager create platform-specific dialogs through the same API.',
-            ),
-          ],
+      body: SafeArea(
+        top: false,
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              DropdownButton<int>(
+                value: _selectedPlatform,
+                items: const [
+                  DropdownMenuItem(value: 0, child: Text("Android")),
+                  DropdownMenuItem(value: 1, child: Text("iOS")),
+                ],
+                onChanged: (index) {
+                  if (index != null) {
+                    setState(() {
+                      _selectedPlatform = index;
+                    });
+                  }
+                },
+              ),
+              DropdownButton<String>(
+                value: _selectedDialogType,
+                items: const [
+                  DropdownMenuItem(value: 'alert', child: Text("Alert Dialog")),
+                  DropdownMenuItem(
+                      value: 'confirm', child: Text("Confirm Dialog")),
+                ],
+                onChanged: (type) {
+                  if (type != null) {
+                    setState(() {
+                      _selectedDialogType = type;
+                    });
+                  }
+                },
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () =>
+                    currentManager.showDialog(context, _selectedDialogType),
+                child: const Text("Show Dialog"),
+              ),
+              const SizedBox(height: 16),
+              const PatternDefinitionCard(
+                title: 'Factory Method Pattern',
+                description:
+                    'Defines an interface for creating objects, while letting subclasses decide which concrete class to instantiate.',
+                exampleContext:
+                    'AndroidDialogManager and IosDialogManager create platform-specific dialogs through the same API.',
+              ),
+            ],
+          ),
         ),
       ),
     );

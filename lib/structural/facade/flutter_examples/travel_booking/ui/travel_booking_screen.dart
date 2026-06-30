@@ -37,6 +37,7 @@ class _TravelBookingScreenState extends State<TravelBookingScreen> {
         foregroundColor: Colors.black,
       ),
       body: SafeArea(
+        top: false,
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(

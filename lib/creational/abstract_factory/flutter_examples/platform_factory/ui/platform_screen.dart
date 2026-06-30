@@ -37,26 +37,29 @@ class _PlatformScreenState extends State<PlatformScreen> {
       appBar: AppBar(
         title: const Text('Abstract Factory: Platform Widgets'),
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          children: [
-            _buildHeader(),
-            const Divider(height: 25),
-            
-            _buildSection('Button', _buildButton()),
-            _buildSection('Indicator', _buildIndicator()),
-            _buildSection('Checkbox / Switch', _buildCheckbox()),
-            _buildSection('Slider', _buildSlider()),
-            const Divider(height: 30),
-            const PatternDefinitionCard(
-              title: 'Abstract Factory Pattern',
-              description:
-                  'Provides an interface for creating families of related objects without specifying their concrete classes.',
-              exampleContext:
-                  'It creates a full widget family (button, indicator, checkbox, slider) as Material or Cupertino at runtime.',
-            ),
-          ],
+      body: SafeArea(
+        top: false,
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            children: [
+              _buildHeader(),
+              const Divider(height: 25),
+              
+              _buildSection('Button', _buildButton()),
+              _buildSection('Indicator', _buildIndicator()),
+              _buildSection('Checkbox / Switch', _buildCheckbox()),
+              _buildSection('Slider', _buildSlider()),
+              const Divider(height: 30),
+              const PatternDefinitionCard(
+                title: 'Abstract Factory Pattern',
+                description:
+                    'Provides an interface for creating families of related objects without specifying their concrete classes.',
+                exampleContext:
+                    'It creates a full widget family (button, indicator, checkbox, slider) as Material or Cupertino at runtime.',
+              ),
+            ],
+          ),
         ),
       ),
     );

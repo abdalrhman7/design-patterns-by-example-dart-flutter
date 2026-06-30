@@ -34,39 +34,42 @@ class _TimeDisplayScreenState extends State<TimeDisplayScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Time Format Strategy Demo')),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            /// 🔹 The widget that uses the current selected strategy
-            FormattedTime(
-              time: _exampleTime,
-              formatStrategy: _strategies[_selected],
-            ),
-
-            const SizedBox(height: 24),
-
-            /// 🔹 UI to let the user pick the formatting strategy
-            Text(
-              'Choose time format:',
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            ..._labels.asMap().entries.map((entry) {
-              return RadioListTile<int>(
-                title: Text(entry.value),
-                value: entry.key,
-                groupValue: _selected,
-                onChanged: (val) => setState(() => _selected = val!),
-              );
-            }),
-            const PatternDefinitionCard(
-              title: 'Strategy Pattern',
-              description:
-                  'Defines a family of algorithms, encapsulates each one, and makes them interchangeable at runtime.',
-              exampleContext:
-                  'Users dynamically switch between 12-hour and 24-hour time formatting at runtime without changing the display widget code.',
-            ),
-          ],
+      body: SafeArea(
+        top: false,
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              /// 🔹 The widget that uses the current selected strategy
+              FormattedTime(
+                time: _exampleTime,
+                formatStrategy: _strategies[_selected],
+              ),
+  
+              const SizedBox(height: 24),
+  
+              /// 🔹 UI to let the user pick the formatting strategy
+              Text(
+                'Choose time format:',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              ..._labels.asMap().entries.map((entry) {
+                return RadioListTile<int>(
+                  title: Text(entry.value),
+                  value: entry.key,
+                  groupValue: _selected,
+                  onChanged: (val) => setState(() => _selected = val!),
+                );
+              }),
+              const PatternDefinitionCard(
+                title: 'Strategy Pattern',
+                description:
+                    'Defines a family of algorithms, encapsulates each one, and makes them interchangeable at runtime.',
+                exampleContext:
+                    'Users dynamically switch between 12-hour and 24-hour time formatting at runtime without changing the display widget code.',
+              ),
+            ],
+          ),
         ),
       ),
     );

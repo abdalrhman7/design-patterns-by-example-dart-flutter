@@ -22,50 +22,53 @@ class _CounterFirstScreenState extends State<CounterFirstScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Home Page')),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Singleton Counter: ${singletonCounter.count}'),
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  singletonCounter.increment();
-                });
-              },
-              child: const Text('Increment Singleton'),
-            ),
-            const SizedBox(height: 20),
-            Text('Non-Singleton Counter: ${nonSingletonCounter.count}'),
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  nonSingletonCounter.increment();
-                });
-              },
-              child: const Text('Increment Non-Singleton'),
-            ),
-            const SizedBox(height: 40),
-            ElevatedButton(
-              onPressed: () async {
-                // Navigate to second screen
-                await Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => const CounterSecondScreen()),
-                );
-                setState(() {});
-              },
-              child: const Text('Go to Second Page'),
-            ),
-            const PatternDefinitionCard(
-              title: 'Singleton Pattern',
-              description:
-                  'Ensures a class has only one instance and provides a global access point to it.',
-              exampleContext:
-                  'SingletonCounter preserves shared state across both screens, while NonSingletonCounter does not.',
-            ),
-          ],
+      body: SafeArea(
+        top: false,
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Singleton Counter: ${singletonCounter.count}'),
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    singletonCounter.increment();
+                  });
+                },
+                child: const Text('Increment Singleton'),
+              ),
+              const SizedBox(height: 20),
+              Text('Non-Singleton Counter: ${nonSingletonCounter.count}'),
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    nonSingletonCounter.increment();
+                  });
+                },
+                child: const Text('Increment Non-Singleton'),
+              ),
+              const SizedBox(height: 40),
+              ElevatedButton(
+                onPressed: () async {
+                  // Navigate to second screen
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const CounterSecondScreen()),
+                  );
+                  setState(() {});
+                },
+                child: const Text('Go to Second Page'),
+              ),
+              const PatternDefinitionCard(
+                title: 'Singleton Pattern',
+                description:
+                    'Ensures a class has only one instance and provides a global access point to it.',
+                exampleContext:
+                    'SingletonCounter preserves shared state across both screens, while NonSingletonCounter does not.',
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -90,45 +93,48 @@ class _CounterSecondScreenState extends State<CounterSecondScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Second Page')),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // SingletonCounter retains its previous value
-            Text('Singleton Counter: ${singletonCounter.count}'),
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  singletonCounter.increment();
-                });
-              },
-              child: const Text('Increment Singleton'),
-            ),
-            const SizedBox(height: 20),
-            // NonSingletonCounter is a fresh instance, resets to zero
-            Text('Non-Singleton Counter: ${nonSingletonCounter.count}'),
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  nonSingletonCounter.increment();
-                });
-              },
-              child: const Text('Increment Non-Singleton'),
-            ),
-            const SizedBox(height: 40),
-            ElevatedButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('Back to Home'),
-            ),
-            const PatternDefinitionCard(
-              title: 'Singleton Pattern',
-              description:
-                  'Provides one shared instance so data can stay consistent across different parts of the app.',
-              exampleContext:
-                  'This screen reads the same SingletonCounter instance to show persistence after navigation.',
-            ),
-          ],
+      body: SafeArea(
+        top: false,
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // SingletonCounter retains its previous value
+              Text('Singleton Counter: ${singletonCounter.count}'),
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    singletonCounter.increment();
+                  });
+                },
+                child: const Text('Increment Singleton'),
+              ),
+              const SizedBox(height: 20),
+              // NonSingletonCounter is a fresh instance, resets to zero
+              Text('Non-Singleton Counter: ${nonSingletonCounter.count}'),
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    nonSingletonCounter.increment();
+                  });
+                },
+                child: const Text('Increment Non-Singleton'),
+              ),
+              const SizedBox(height: 40),
+              ElevatedButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Back to Home'),
+              ),
+              const PatternDefinitionCard(
+                title: 'Singleton Pattern',
+                description:
+                    'Provides one shared instance so data can stay consistent across different parts of the app.',
+                exampleContext:
+                    'This screen reads the same SingletonCounter instance to show persistence after navigation.',
+              ),
+            ],
+          ),
         ),
       ),
     );

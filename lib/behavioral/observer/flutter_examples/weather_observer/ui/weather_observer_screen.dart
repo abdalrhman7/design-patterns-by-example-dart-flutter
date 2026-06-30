@@ -42,29 +42,32 @@ class _WeatherObserverScreenState extends State<WeatherObserverScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('🌦️ Observer Pattern - Weather')),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _tempDisplay.build(),
-            const SizedBox(height: 10),
-            _humidityDisplay.build(),
-            const SizedBox(height: 10),
-            _alertDisplay.build(),
-            const Spacer(),
-            ElevatedButton(
-              onPressed: _updateWeather,
-              child: const Text('🔄 Update Weather'),
-            ),
-            const PatternDefinitionCard(
-              title: 'Observer Pattern',
-              description:
-                  'Defines a one-to-many dependency so when one object changes state, all dependents are notified automatically.',
-              exampleContext:
-                  'WeatherStation notifies temperature, humidity, and alert displays whenever measurements change.',
-            ),
-          ],
+      body: SafeArea(
+        top: false,
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _tempDisplay.build(),
+              const SizedBox(height: 10),
+              _humidityDisplay.build(),
+              const SizedBox(height: 10),
+              _alertDisplay.build(),
+              const Spacer(),
+              ElevatedButton(
+                onPressed: _updateWeather,
+                child: const Text('🔄 Update Weather'),
+              ),
+              const PatternDefinitionCard(
+                title: 'Observer Pattern',
+                description:
+                    'Defines a one-to-many dependency so when one object changes state, all dependents are notified automatically.',
+                exampleContext:
+                    'WeatherStation notifies temperature, humidity, and alert displays whenever measurements change.',
+              ),
+            ],
+          ),
         ),
       ),
     );

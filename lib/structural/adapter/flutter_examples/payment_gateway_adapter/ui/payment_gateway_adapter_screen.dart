@@ -61,70 +61,73 @@ class _PaymentGatewayAdapterScreenState extends State<PaymentGatewayAdapterScree
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Adapter Pattern: Payment Gateway')),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          const Text('Choose provider implementation'),
-          SegmentedButton<String>(
-            segments: const [
-              ButtonSegment<String>(
-                value: 'legacy',
-                label: Text('LegacyBank'),
-                icon: Icon(Icons.account_balance_outlined),
+      body: SafeArea(
+        top: false,
+        child: ListView(
+          padding: const EdgeInsets.all(16),
+          children: [
+            const Text('Choose provider implementation'),
+            SegmentedButton<String>(
+              segments: const [
+                ButtonSegment<String>(
+                  value: 'legacy',
+                  label: Text('LegacyBank'),
+                  icon: Icon(Icons.account_balance_outlined),
+                ),
+                ButtonSegment<String>(
+                  value: 'quickpay',
+                  label: Text('QuickPay via Adapter'),
+                  icon: Icon(Icons.swap_horiz),
+                ),
+              ],
+              selected: <String>{_selectedGateway},
+              onSelectionChanged: (selection) => _switchGateway(selection.first),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              _selectedGateway == 'legacy'
+                  ? 'LegacyBank implements the target interface directly.'
+                  : 'QuickPay uses an adapter that translates then delegates.',
+            ),
+            const SizedBox(height: 8),
+            TextField(
+              controller: _amountController,
+              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              decoration: const InputDecoration(
+                labelText: 'Amount (USD)',
+                border: OutlineInputBorder(),
               ),
-              ButtonSegment<String>(
-                value: 'quickpay',
-                label: Text('QuickPay via Adapter'),
-                icon: Icon(Icons.swap_horiz),
+            ),
+            const SizedBox(height: 12),
+            TextField(
+              controller: _customerController,
+              decoration: const InputDecoration(
+                labelText: 'Customer ID',
+                border: OutlineInputBorder(),
               ),
-            ],
-            selected: <String>{_selectedGateway},
-            onSelectionChanged: (selection) => _switchGateway(selection.first),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            _selectedGateway == 'legacy'
-                ? 'LegacyBank implements the target interface directly.'
-                : 'QuickPay uses an adapter that translates then delegates.',
-          ),
-          const SizedBox(height: 8),
-          TextField(
-            controller: _amountController,
-            keyboardType: const TextInputType.numberWithOptions(decimal: true),
-            decoration: const InputDecoration(
-              labelText: 'Amount (USD)',
-              border: OutlineInputBorder(),
             ),
-          ),
-          const SizedBox(height: 12),
-          TextField(
-            controller: _customerController,
-            decoration: const InputDecoration(
-              labelText: 'Customer ID',
-              border: OutlineInputBorder(),
+            const SizedBox(height: 12),
+            FilledButton.icon(
+              onPressed: _payNow,
+              icon: const Icon(Icons.payment),
+              label: const Text('Pay'),
             ),
-          ),
-          const SizedBox(height: 12),
-          FilledButton.icon(
-            onPressed: _payNow,
-            icon: const Icon(Icons.payment),
-            label: const Text('Pay'),
-          ),
-          const SizedBox(height: 16),
-          Card(
-            child: ListTile(
-              title: const Text('Transaction result'),
-              subtitle: Text(_lastResult),
+            const SizedBox(height: 16),
+            Card(
+              child: ListTile(
+                title: const Text('Transaction result'),
+                subtitle: Text(_lastResult),
+              ),
             ),
-          ),
-          const PatternDefinitionCard(
-            title: 'Adapter Pattern',
-            description:
-                'Converts one interface into another interface clients expect, so incompatible classes can work together.',
-            exampleContext:
-                'CheckoutService still calls chargeInCents(...). QuickPayAdapter converts cents to QuickPay format then delegates to QuickPaySdk without changing checkout logic.',
-          ),
-        ],
+            const PatternDefinitionCard(
+              title: 'Adapter Pattern',
+              description:
+                  'Converts one interface into another interface clients expect, so incompatible classes can work together.',
+              exampleContext:
+                  'CheckoutService still calls chargeInCents(...). QuickPayAdapter converts cents to QuickPay format then delegates to QuickPaySdk without changing checkout logic.',
+            ),
+          ],
+        ),
       ),
     );
   }

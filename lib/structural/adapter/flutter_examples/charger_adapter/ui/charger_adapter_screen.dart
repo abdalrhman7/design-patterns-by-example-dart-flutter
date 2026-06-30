@@ -37,55 +37,58 @@ class _ChargerAdapterScreenState extends State<ChargerAdapterScreen> {
 
     return Scaffold(
       appBar: AppBar(title: const Text('Adapter Pattern: Charger Ports')),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          Card(
-            child: ListTile(
-              leading: Icon(
-                isHealthy ? Icons.battery_charging_full : Icons.battery_alert,
-                color: isHealthy ? Colors.green : Colors.orange,
-                size: 32,
+      body: SafeArea(
+        top: false,
+        child: ListView(
+          padding: const EdgeInsets.all(16),
+          children: [
+            Card(
+              child: ListTile(
+                leading: Icon(
+                  isHealthy ? Icons.battery_charging_full : Icons.battery_alert,
+                  color: isHealthy ? Colors.green : Colors.orange,
+                  size: 32,
+                ),
+                title: const Text('Phone Battery'),
+                subtitle: Text('$battery%'),
               ),
-              title: const Text('Phone Battery'),
-              subtitle: Text('$battery%'),
             ),
-          ),
-          const SizedBox(height: 8),
-          const Card(
-            child: ListTile(
-              leading: Icon(Icons.power),
-              title: Text('Available Charger'),
-              subtitle: Text('Old charger exposes USB-A only'),
+            const SizedBox(height: 8),
+            const Card(
+              child: ListTile(
+                leading: Icon(Icons.power),
+                title: Text('Available Charger'),
+                subtitle: Text('Old charger exposes USB-A only'),
+              ),
             ),
-          ),
-          const SizedBox(height: 16),
-          FilledButton.icon(
-            onPressed: _tryWithoutAdapter,
-            icon: const Icon(Icons.close),
-            label: const Text('Charge without Adapter'),
-          ),
-          const SizedBox(height: 8),
-          FilledButton.tonalIcon(
-            onPressed: _chargeWithAdapter,
-            icon: const Icon(Icons.cable),
-            label: const Text('Charge using USB-A -> USB-C Adapter'),
-          ),
-          const SizedBox(height: 16),
-          Card(
-            child: ListTile(
-              title: const Text('Result'),
-              subtitle: Text(_status),
+            const SizedBox(height: 16),
+            FilledButton.icon(
+              onPressed: _tryWithoutAdapter,
+              icon: const Icon(Icons.close),
+              label: const Text('Charge without Adapter'),
             ),
-          ),
-          const PatternDefinitionCard(
-            title: 'Adapter Pattern',
-            description:
-                'Makes incompatible interfaces work together by translating one contract into another.',
-            exampleContext:
-                'The phone expects UsbCPort. OldUsbACharger does not match, so UsbAToUsbCAdapter translates calls and delegates to the old charger.',
-          ),
-        ],
+            const SizedBox(height: 8),
+            FilledButton.tonalIcon(
+              onPressed: _chargeWithAdapter,
+              icon: const Icon(Icons.cable),
+              label: const Text('Charge using USB-A -> USB-C Adapter'),
+            ),
+            const SizedBox(height: 16),
+            Card(
+              child: ListTile(
+                title: const Text('Result'),
+                subtitle: Text(_status),
+              ),
+            ),
+            const PatternDefinitionCard(
+              title: 'Adapter Pattern',
+              description:
+                  'Makes incompatible interfaces work together by translating one contract into another.',
+              exampleContext:
+                  'The phone expects UsbCPort. OldUsbACharger does not match, so UsbAToUsbCAdapter translates calls and delegates to the old charger.',
+            ),
+          ],
+        ),
       ),
     );
   }
