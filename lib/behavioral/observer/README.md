@@ -1,12 +1,12 @@
-# 🔁 Observer Pattern
+# Observer Pattern
 
-## 🧠 Definition
+## Definition
 
 The **Observer Pattern** is a behavioral design pattern that defines a one-to-many dependency between objects. When the state of the **Observable** (aka Subject) changes, all its **Observers** are automatically notified and updated. This allows a loosely coupled system where different parts can react to changes without tightly depending on each other.
 
 ---
 
-## 🚀 When to Use
+## When to Use
 
 - When multiple objects need to stay in sync with the state of another object.
 - When you want to implement event-driven or reactive systems.
@@ -15,37 +15,37 @@ The **Observer Pattern** is a behavioral design pattern that defines a one-to-ma
 
 ---
 
-## 🧱 Structure
+## Structure
 
-**Observable**  
+**Observable**
   └── Maintains a list of observers and notifies them of state changes.
 
-**Observer (interface)**  
-  ├── ConcreteObserverA  
+**Observer (interface)**
+  ├── ConcreteObserverA
   └── ConcreteObserverB
 
 ---
 
-## ✅ Key Principles in Action
+## Key Principles in Action
 
-### 🔹 1. **Loose Coupling**
+### 1. **Loose Coupling**
 The Observable doesn't need to know the internal logic of its observers — just that they implement a specific interface. Observers can change or be replaced independently.
 
-### 🔹 2. **Separation of Concerns**
+### 2. **Separation of Concerns**
 Each object is responsible for one thing:
 - The Observable manages state and notifications.
-- Observers decide how to react when notified.  
+- Observers decide how to react when notified.
   This clear separation reduces interdependence and complexity.
 
-### 🔹 3. **Open for Extension**
+### 3. **Open for Extension**
 You can add new observer types without changing the Observable class — just register them.
 
-### 🔹 4. **Dynamic Relationships**
+### 4. **Dynamic Relationships**
 Observers can subscribe/unsubscribe at runtime, allowing flexible and extensible behavior.
 
 ---
 
-## 🧱 SOLID Principles Applied
+## SOLID Principles Applied
 
 | Principle | Description |
 |----------|-------------|
@@ -55,7 +55,7 @@ Observers can subscribe/unsubscribe at runtime, allowing flexible and extensible
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 - `core_examples/` → Basic Dart examples using Observer Pattern.
 - `flutter_examples/` → UI-driven examples with reactive widget behavior.
@@ -64,6 +64,6 @@ Observers can subscribe/unsubscribe at runtime, allowing flexible and extensible
 
 ---
 
-## 📌 Summary
+## Summary
 
 The Observer Pattern is ideal for scenarios where changes in one object need to automatically trigger updates in others — without tight coupling. It promotes flexibility, testability, and responsiveness, and is fundamental in many architectures like MVC, MVVM, and reactive programming. By leveraging interfaces and dynamic subscriptions, the system becomes more modular and extensible.

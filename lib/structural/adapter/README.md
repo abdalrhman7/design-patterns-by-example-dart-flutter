@@ -1,13 +1,13 @@
-# 🔌 Adapter Pattern
+# Adapter Pattern
 
-## 🧠 Definition
+## Definition
 
-The **Adapter Pattern** is a structural design pattern that lets classes with incompatible interfaces work together.  
+The **Adapter Pattern** is a structural design pattern that lets classes with incompatible interfaces work together.
 It does this by introducing an adapter object that converts one interface into another interface the client expects.
 
 ---
 
-## 🚀 When to Use
+## When to Use
 
 - You need to use an existing class, but its API does not match what your code expects.
 - You want to integrate third-party or legacy code without changing the client code.
@@ -16,7 +16,7 @@ It does this by introducing an adapter object that converts one interface into a
 - You want to apply **delegation** so the adapter forwards work to the wrapped object.
 
 ---
-## 🧱 Structure
+## Structure
 
 Client
   └── depends on Target interface
@@ -34,24 +34,24 @@ Adapter
 
 ---
 
-## ✅ Key Principles in Action
+## Key Principles in Action
 
-### 🔹 1. **Interface Translation**
+### 1. **Interface Translation**
 The adapter converts calls from the `Target` interface into calls the `Adaptee` understands.
 
-### 🔹 2. **Delegation**
-The adapter usually does not reimplement core business logic.  
+### 2. **Delegation**
+The adapter usually does not reimplement core business logic.
 Instead, it **delegates** to the wrapped adaptee object, adding only the conversion/mapping needed.
 
-### 🔹 3. **Separation of Concerns**
+### 3. **Separation of Concerns**
 Compatibility code lives in one adapter class, not mixed inside clients or domain logic.
 
-### 🔹 4. **Open/Closed**
+### 4. **Open/Closed**
 You can add new adapters for new external APIs without changing stable client code.
 
 ---
 
-## 🧱 SOLID Principles Applied
+## SOLID Principles Applied
 
 | Principle | Description |
 |----------|-------------|
@@ -63,7 +63,7 @@ You can add new adapters for new external APIs without changing stable client co
 
 ---
 
-## 🔁 How Delegation Appears Here
+## How Delegation Appears Here
 
 Inside an adapter, the flow is usually:
 
@@ -72,12 +72,12 @@ Inside an adapter, the flow is usually:
 3. **Delegate** the real work to `Adaptee`.
 4. Transform result back to the shape expected by client.
 
-So delegation is the core mechanic that makes Adapter clean:  
+So delegation is the core mechanic that makes Adapter clean:
 adapter = translator + forwarder.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 - `core_examples/` → Console or Dart-only examples.
 - `flutter_examples/` → Interactive Flutter-based examples.
@@ -86,8 +86,8 @@ adapter = translator + forwarder.
 
 ---
 
-## 📌 Summary
+## Summary
 
-The Adapter Pattern helps you integrate incompatible APIs safely and cleanly.  
+The Adapter Pattern helps you integrate incompatible APIs safely and cleanly.
 By isolating translation in adapter classes and **delegating** actual work to wrapped objects, you reduce coupling, improve maintainability, and keep client code stable even when external interfaces differ.
 

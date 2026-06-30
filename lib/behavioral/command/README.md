@@ -1,12 +1,12 @@
-# 🎮 Command Pattern
+# Command Pattern
 
-## 🧠 Definition
+## Definition
 
 The **Command Pattern** is a behavioral design pattern that turns a request into a stand-alone object that contains all information about the request. This transformation lets you pass requests as a method arguments, delay or queue a request's execution, and support undoable operations.
 
 ---
 
-## 🚀 When to Use
+## When to Use
 
 - You want to **decouple the sender (invoker) from the receiver** (the object that performs the action).
 - You need to support **undo/redo operations**.
@@ -16,7 +16,7 @@ The **Command Pattern** is a behavioral design pattern that turns a request into
 - You want clearer **separation of concerns**: *when* a request runs (invoker), *what* is requested (command), and *how* work is done (receiver) stay in different places.
 
 ---
-## 🧱 Structure
+## Structure
 
 Client
   └── creates and configures the ConcreteCommand, then assigns it to the Invoker
@@ -36,26 +36,26 @@ Receiver (Worker)
 
 ---
 
-## ✅ Key Principles in Action
+## Key Principles in Action
 
-### 🔹 1. **Decoupling**
+### 1. **Decoupling**
 The sender (Invoker) doesn't know anything about the receiver or how the request is processed; it only knows the `Command` interface.
 
-### 🔹 2. **Encapsulate what varies**
+### 2. **Encapsulate what varies**
 Each command encapsulates a specific action and the data required for it, isolating the action's logic from its caller.
 
-### 🔹 3. **Favor composition over inheritance**
+### 3. **Favor composition over inheritance**
 The Invoker *composes* a command object and triggers it. This allows for dynamic behavior changes at runtime.
 
-### 🔹 4. **Code to an interface, not an implementation**
+### 4. **Code to an interface, not an implementation**
 The Invoker depends on the `Command` interface, not a concrete class, making the system flexible and easy to extend.
 
-### 🔹 5. **Separation of concerns**
+### 5. **Separation of concerns**
 The **Invoker** cares about triggering execution; each **Concrete Command** packages one request; the **Receiver** owns domain logic. Those roles are not mixed in one class, so each part is easier to read, test, and change independently.
 
 ---
 
-## 🧱 SOLID Principles Applied
+## SOLID Principles Applied
 
 | Principle | Description |
 |----------|-------------|
@@ -67,7 +67,7 @@ The **Invoker** cares about triggering execution; each **Concrete Command** pack
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 - `core_examples/` → Console or Dart-only examples.
 - `flutter_examples/` → Interactive Flutter-based examples.
@@ -76,6 +76,6 @@ The **Invoker** cares about triggering execution; each **Concrete Command** pack
 
 ---
 
-## 📌 Summary
+## Summary
 
 The Command Pattern converts requests into first-class objects. This promotes **loose coupling**, clearer **separation of concerns** between triggering and doing work, enables **undo/redo** functionality, and makes the code highly **extensible** and **testable**. By encapsulating actions, you can manage them as data—storing, queuing, or logging them as needed.

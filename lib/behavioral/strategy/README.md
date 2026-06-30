@@ -1,12 +1,12 @@
-# 🎯 Strategy Pattern
+# Strategy Pattern
 
-## 🧠 Definition
+## Definition
 
 The **Strategy Pattern** is a behavioral design pattern that defines a family of algorithms, encapsulates each one, and makes them interchangeable. This allows the algorithm to vary independently from the clients that use it.
 
 ---
 
-## 🚀 When to Use
+## When to Use
 
 - You have multiple classes that differ only in behavior (logic).
 - You want to switch between behaviors (algorithms) dynamically at runtime.
@@ -15,7 +15,7 @@ The **Strategy Pattern** is a behavioral design pattern that defines a family of
 - You want to isolate and test each behavior independently.
 
 ---
-## 🧱 Structure
+## Structure
 
 Context
   └── has a reference to a Strategy
@@ -27,23 +27,23 @@ Strategy (interface)
 
 ---
 
-## ✅ Key Principles in Action
+## Key Principles in Action
 
-### 🔹 1. **Polymorphism**
+### 1. **Polymorphism**
 The context interacts with different strategies through a common interface, allowing behavior changes without modifying the context.
 
-### 🔹 2. **Encapsulate what varies**
+### 2. **Encapsulate what varies**
 Each concrete strategy encapsulates a specific behavior, isolating the parts of code that are likely to change.
 
-### 🔹 3. **Favor composition over inheritance**
+### 3. **Favor composition over inheritance**
 The context *composes* a strategy object rather than inheriting from one. This promotes reusability and flexibility.
 
-### 🔹 4. **Code to an interface, not an implementation**
+### 4. **Code to an interface, not an implementation**
 The context depends on an abstraction (strategy interface), not a concrete class, enabling flexibility and adherence to good design principles.
 
 ---
 
-## 🧱 SOLID Principles Applied
+## SOLID Principles Applied
 
 | Principle | Description |
 |----------|-------------|
@@ -55,7 +55,7 @@ The context depends on an abstraction (strategy interface), not a concrete class
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 - `core_examples/` → Console or Dart-only examples.
 - `flutter_examples/` → Interactive Flutter-based examples.
@@ -64,7 +64,7 @@ The context depends on an abstraction (strategy interface), not a concrete class
 
 ---
 
-## 📌 Summary
+## Summary
 
 The Strategy Pattern is one of the simplest yet most powerful behavioral patterns. It enables dynamic behavior changes, cleaner code, and better adherence to SOLID principles. By encapsulating algorithms and coding to abstractions, it enhances reusability, testability, and long-term maintainability.
 

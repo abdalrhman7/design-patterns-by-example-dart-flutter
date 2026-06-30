@@ -1,12 +1,12 @@
-# 📋 Template Method Pattern
+# Template Method Pattern
 
-## 🧠 Definition
+## Definition
 
 The **Template Method Pattern** is a behavioral design pattern that defines the skeleton of an algorithm in the superclass but lets subclasses override specific steps of the algorithm without changing its structure.
 
 ---
 
-## 🚀 When to Use
+## When to Use
 
 - You have multiple classes that contain **almost identical algorithms** with some minor differences.
 - You want to **avoid code duplication** by pulling common behavior into a base class.
@@ -14,7 +14,7 @@ The **Template Method Pattern** is a behavioral design pattern that defines the 
 - You want to enforce a **fixed sequence of steps** in an algorithm while allowing flexibility in the implementation of those steps.
 
 ---
-## 🧱 Structure
+## Structure
 
 Abstract Class (Base)
   ├── Defines the `templateMethod()` (the algorithm skeleton)
@@ -28,26 +28,26 @@ Concrete Class (Subclass)
 
 ---
 
-## ✅ Key Principles in Action
+## Key Principles in Action
 
-### 🔹 1. **The Hollywood Principle**
+### 1. **The Hollywood Principle**
 "Don't call us, we'll call you." The base class controls the algorithm's flow and calls the methods implemented in the subclasses at the right time.
 
-### 🔹 2. **Encapsulate what varies**
+### 2. **Encapsulate what varies**
 The invariant parts (steps that never change) stay in the base class, while variant parts (individual steps) are delegated to subclasses.
 
-### 🔹 3. **Hooks (Optional Extension)**
+### 3. **Hooks (Optional Extension)**
 Hooks are methods with a default (often empty) implementation in the base class. They allow subclasses to "hook into" the algorithm at specific points **optionally**, without being forced to override them if not needed.
 
-### 🔹 4. **Code Reusability**
+### 4. **Code Reusability**
 Common logic is written once in the superclass, preventing "code rot" and making maintenance easier across all variations.
 
-### 🔹 5. **Fixed Algorithm Skeleton**
+### 5. **Fixed Algorithm Skeleton**
 The template method is usually marked as `final` (or equivalent) to ensure subclasses can't change the execution order of the steps.
 
 ---
 
-## 🧱 SOLID Principles Applied
+## SOLID Principles Applied
 
 | Principle | Description |
 |----------|-------------|
@@ -57,7 +57,7 @@ The template method is usually marked as `final` (or equivalent) to ensure subcl
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 - `core_examples/` → Console or Dart-only examples (e.g., Data Parser or Brewing Coffee/Tea).
 - `flutter_examples/` → Interactive Flutter-based examples (e.g., UI Page Loader or Animation Sequences).
@@ -66,6 +66,6 @@ The template method is usually marked as `final` (or equivalent) to ensure subcl
 
 ---
 
-## 📌 Summary
+## Summary
 
 The Template Method Pattern is a powerful tool for **reducing code duplication** and **enforcing a standard process**. By defining a fixed skeleton and allowing controlled customization, it creates a clean, maintainable architecture that adheres to the best design principles.

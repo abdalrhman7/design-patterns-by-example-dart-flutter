@@ -1,10 +1,10 @@
-# 🎨 Design Patterns in Flutter & Dart: By Example
+# Design Patterns in Flutter & Dart: By Example
 
-Welcome to **Design Patterns in Flutter & Dart: By Example**! 🚀
+Welcome to **Design Patterns in Flutter & Dart: By Example**!
 
-## 📖 About The Project
+## About The Project
 
-This is an **educational project** designed to bridge the gap between theoretical design patterns and practical, real-world application development. 
+This is an **educational project** designed to bridge the gap between theoretical design patterns and practical, real-world application development.
 
 Instead of just showing the final abstract code, this project takes a practical, step-by-step approach:
 1. **The Problem:** We first present a realistic scenario and write the code *without* using any design patterns. This highlights the common pain points, tight coupling, and SOLID violations you might face in real apps.
@@ -15,7 +15,7 @@ If you've ever found design patterns to be too theoretical or hard to apply in a
 
 ---
 
-## 🧠 Why this project?
+## Why this project?
 
 Learning design patterns can be abstract and confusing. This project simplifies the learning curve by providing:
 1.  **The "Problem"**: Code written *without* the pattern to illustrate common pitfalls and SOLID violations.
@@ -25,7 +25,7 @@ Learning design patterns can be abstract and confusing. This project simplifies 
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 Each pattern is organized in a clear, consistent hierarchy:
 
@@ -43,17 +43,17 @@ lib/
 
 ---
 
-##  Implemented Patterns
+## Implemented Patterns
 
-###  Creational Patterns
-| Pattern | Description 
+### Creational Patterns
+| Pattern | Description
 |:--- |:--- |:---:|
 | **Abstract Factory** | Creating families of related objects.
 | **Factory Method** | Instantiating objects without specifying concrete classes.
 | **Singleton** | Ensuring a class has only one instance.
 
-###  Structural Patterns
-| Pattern | Description 
+### Structural Patterns
+| Pattern | Description
 |:--- |:--- |:---:|
 | **Adapter** | Converting an interface into another expected by clients.
 | **Composite** | Composing objects into tree structures to represent part-whole hierarchies.
@@ -61,8 +61,8 @@ lib/
 | **Facade** | Providing a simplified interface to a complex system.
 | **Proxy** | Providing a surrogate or placeholder for another object to control access to it.
 
-###  Behavioral Patterns
-| Pattern | Description 
+### Behavioral Patterns
+| Pattern | Description
 |:--- |:--- |:---:|
 | **Command** | Encapsulating a request as an object.
 | **Iterator** | Accessing elements of a collection sequentially without exposing its representation.
@@ -73,7 +73,7 @@ lib/
 
 ---
 
-## ✅ Design Principles Applied
+## Design Principles Applied
 
 Every example is built with a focus on:
 *   **SOLID Principles**: Ensuring code is maintainable, extensible, and robust.
@@ -85,15 +85,15 @@ Every example is built with a focus on:
 ---
 
 
-## 📌 Path to Mastery
+## Path to Mastery
 1.  Read the `README.md` inside each pattern folder.
 2.  Examine the `without_pattern` code to identify the pain points.
-3.  Study the `with_pattern` refactor and the 🔹 comments explaining the principles.
+3.  Study the `with_pattern` refactor and the comments explaining the principles.
 4.  Run the Flutter example to see the dynamic behavior.
 
 ---
 
-## 📸 Screenshot
+## Screenshot
 
 <img width="1024" height="1536" alt="DesignPatterns" src="https://github.com/user-attachments/assets/be6af8a1-eccc-411d-a710-88fb4fc1be40" />
 

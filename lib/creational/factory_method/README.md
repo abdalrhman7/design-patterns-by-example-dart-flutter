@@ -1,6 +1,6 @@
-# 🏭 Factory Method Pattern
+# Factory Method Pattern
 
-## 🧠 Definition
+## Definition
 
 The Factory Method pattern is a **creational** design pattern that provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created.
 
@@ -8,7 +8,7 @@ This pattern decouples the code that creates objects from the code that uses the
 
 ---
 
-## 🚀 When to Use
+## When to Use
 
 * When the exact type of object to create isn’t known until runtime.
 * When you want to delegate the responsibility of instantiating objects to subclasses.
@@ -17,18 +17,18 @@ This pattern decouples the code that creates objects from the code that uses the
 
 ---
 
-## 🧱 Structure
+## Structure
 
-**Product (interface or abstract class)**  
+**Product (interface or abstract class)**
 ↳ Defines the interface of objects the factory method creates.
 
-**ConcreteProduct**  
+**ConcreteProduct**
 ↳ Implements the Product interface.
 
-**Creator (abstract class)**  
+**Creator (abstract class)**
 ↳ Declares the factory method which returns Product objects. May define default behavior.
 
-**ConcreteCreator**  
+**ConcreteCreator**
 ↳ Overrides the factory method to return a specific ConcreteProduct.
 
 ```
@@ -37,27 +37,27 @@ Client → Creator → (factoryMethod) → ConcreteProduct
 
 ---
 
-## ✅ Key Principles in Action
+## Key Principles in Action
 
-### 🔹 1. **Open/Closed Principle**
+### 1. **Open/Closed Principle**
 
 You can introduce new product types by adding new subclasses without changing existing logic.
 
-### 🔹 2. **Single Responsibility**
+### 2. **Single Responsibility**
 
 Each Creator class is only responsible for instantiating specific types of products.
 
-### 🔹 3. **Dependency Inversion**
+### 3. **Dependency Inversion**
 
 The creator depends on an abstraction (Product), not on concrete implementations.
 
-### 🔹 4. **Encapsulation of Object Creation**
+### 4. **Encapsulation of Object Creation**
 
 The object creation code is isolated in one place, reducing duplication and enhancing maintainability.
 
 ---
 
-## 🧱 SOLID Principles Applied
+## SOLID Principles Applied
 
 | Principle                     | Description                                                                 |
 | ----------------------------- | --------------------------------------------------------------------------- |
@@ -68,7 +68,7 @@ The object creation code is isolated in one place, reducing duplication and enha
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 * `core_examples/` → Pure Dart implementation with Pizza types and PizzaStore subclasses.
 * `flutter_examples/` → Flutter UI examples that let users choose dialog platforms (Android/iOS) and dialog types (alert/confirm), demonstrating the Factory Method in a visual and interactive way.
@@ -77,15 +77,15 @@ The object creation code is isolated in one place, reducing duplication and enha
 
 ---
 
-## 🧱 Before vs After
+## Before vs After
 
-### ❌ Without Factory Method
+### Without Factory Method
 
 * The `PizzaStore` class creates all pizza types directly using `if`/`else`.
 * Adding a new pizza means modifying this class = violates Open/Closed Principle.
 * All logic is tightly coupled and not reusable across different store types.
 
-### ✅ With Factory Method
+### With Factory Method
 
 * Pizza creation logic is pushed to subclasses like `NYPizzaStore`, `ChicagoPizzaStore`.
 * `PizzaStore` provides the general workflow and calls `createPizza()` — polymorphically.
@@ -93,7 +93,7 @@ The object creation code is isolated in one place, reducing duplication and enha
 
 ---
 
-## 🍕 Real-World Analogy
+## Real-World Analogy
 
 Imagine ordering a pizza from a franchise:
 
@@ -105,6 +105,6 @@ This is the essence of the Factory Method.
 
 ---
 
-## 📌 Summary
+## Summary
 
 The Factory Method pattern centralizes and defers the creation of product objects, allowing better separation of concerns, easier extension, and greater flexibility. It helps avoid tightly coupled constructors spread throughout the code and improves maintainability.

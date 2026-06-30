@@ -7,17 +7,17 @@ import 'package:flutter/foundation.dart';
 /// They do not contain any UI getters. When a behavior is triggered,
 /// the active State manipulates the Context's data (displayMessage)
 /// and explicitly triggers transitions.
-/// 
+///
 /// This perfectly demonstrates the State Pattern solving the "if/else"
 /// problem while remaining a pure backend behavioral pattern.
 
 // --- 1. The Context ---
 class CoffeeMachine extends ChangeNotifier {
   late MachineState _state;
-  
+
   // Context Data that the states will manipulate
   String _displayMessage = "Initializing...";
-  int _coffeeInventory = 3; 
+  int _coffeeInventory = 3;
 
   CoffeeMachine() {
     // Initial State is Idle
@@ -32,7 +32,7 @@ class CoffeeMachine extends ChangeNotifier {
   MachineState get currentState => _state;
 
   // --- Context Methods for the States to manipulate data ---
-  
+
   // Grouping state and message updates into a single method
   // drastically reduces unnecessary UI rebuilds (notifyListeners).
   void updateStateAndMessage(MachineState newState, String message) {
@@ -47,7 +47,7 @@ class CoffeeMachine extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Pure logic, does not notify directly. It relies on the subsequent 
+  // Pure logic, does not notify directly. It relies on the subsequent
   // state/message update to trigger the UI rebuild cleanly.
   void decreaseInventory() {
     if (_coffeeInventory > 0) {
@@ -81,9 +81,7 @@ class IdleState extends MachineState {
   @override
   void insertCoin() {
     machine.updateStateAndMessage(
-      HasCoinState(machine), 
-      "Coin inserted. Select your coffee."
-    );
+        HasCoinState(machine), "Coin inserted. Select your coffee.");
   }
 
   @override
@@ -111,30 +109,24 @@ class HasCoinState extends MachineState {
     if (machine.inventory <= 0) {
       // Reject brewing gracefully and return the coin
       machine.updateStateAndMessage(
-        OutOfStockState(machine), 
-        "Machine is out of stock. Coin returned."
-      );
+          OutOfStockState(machine), "Machine is out of stock. Coin returned.");
       return;
     }
 
     // 2. State Progression
     machine.decreaseInventory();
     final brewingState = BrewingState(machine);
-    
+
     machine.updateStateAndMessage(
-      brewingState, 
-      "Brewing your perfect coffee... ⏳"
-    );
-    
+        brewingState, "Brewing your perfect coffee... ⏳");
+
     // 3. Safe Async Brewing Simulation
     Future.delayed(const Duration(seconds: 2), () {
       // By comparing against the exact 'brewingState' instance created above,
       // we guarantee this callback only fires if the state hasn't been interrupted.
       if (machine.currentState == brewingState) {
         machine.updateStateAndMessage(
-          ReadyState(machine), 
-          "Ding! Your coffee is ready. Please take it."
-        );
+            ReadyState(machine), "Ding! Your coffee is ready. Please take it.");
       }
     });
   }
@@ -165,7 +157,7 @@ class BrewingState extends MachineState {
 }
 
 class ReadyState extends MachineState {
-  ReadyState(CoffeeMachine machine) : super(machine);
+  ReadyState(super.machine);
 
   @override
   void insertCoin() {
@@ -181,14 +173,10 @@ class ReadyState extends MachineState {
   void takeCoffee() {
     if (machine.inventory > 0) {
       machine.updateStateAndMessage(
-        IdleState(machine), 
-        "Coffee taken. Enjoy! Insert another coin."
-      );
+          IdleState(machine), "Coffee taken. Enjoy! Insert another coin.");
     } else {
       machine.updateStateAndMessage(
-        OutOfStockState(machine), 
-        "Coffee taken. MACHINE OUT OF STOCK."
-      );
+          OutOfStockState(machine), "Coffee taken. MACHINE OUT OF STOCK.");
     }
   }
 }

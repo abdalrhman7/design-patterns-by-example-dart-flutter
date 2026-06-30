@@ -5,6 +5,7 @@
 /// Notice how every behavior method requires a massive `switch`
 /// or `if-else` statement to figure out what to do based on the current state.
 /// This violates the Single Responsibility Principle and Open/Closed Principle.
+library;
 
 enum DocumentState { draft, moderation, published }
 
@@ -15,9 +16,9 @@ class Document {
   Document(this.currentUserRole);
 
   void publish() {
-    // Problem 1: Massive conditional logic based on state. 
+    // Problem 1: Massive conditional logic based on state.
     // It's tangled and tightly coupled.
-    // Problem 2: Violates Open/Closed Principle. If we add an "Archived" state, 
+    // Problem 2: Violates Open/Closed Principle. If we add an "Archived" state,
     // we must modify this existing method!
     if (state == DocumentState.draft) {
       if (currentUserRole == 'admin') {

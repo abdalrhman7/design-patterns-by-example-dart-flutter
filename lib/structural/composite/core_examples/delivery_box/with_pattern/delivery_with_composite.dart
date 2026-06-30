@@ -29,12 +29,11 @@
 /// - Product = Leaf (single item)
 /// - DeliveryBox = Composite (can contain items)
 /// - DeliveryComponent = common interface
-
-
+library;
 
 // 🔹 1. Component (The common interface)
 // -------------------------------------------------------------
-// This abstract class declares operations that are common to both 
+// This abstract class declares operations that are common to both
 // simple and complex objects of a tree.
 abstract class DeliveryComponent {
   double getPrice();
@@ -59,7 +58,7 @@ class Product implements DeliveryComponent {
 
   @override
   void display([String indent = '']) {
-    print('$indent- $title: \$${price}');
+    print('$indent- $title: \$$price');
   }
 }
 
@@ -70,7 +69,7 @@ class Product implements DeliveryComponent {
 // Composites delegate actual work to their children.
 class DeliveryBox implements DeliveryComponent {
   final String title;
-  
+
   // 🔹 Uniformity: Notice it holds an array of 'DeliveryComponent',
   // which means it can silently hold BOTH separate 'Product's AND nested 'DeliveryBox'es!
   final List<DeliveryComponent> _children = [];

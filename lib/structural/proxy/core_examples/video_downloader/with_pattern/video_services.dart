@@ -1,8 +1,9 @@
 /// -------------------------------------------------------------
 /// WITH PROXY PATTERN
 /// -------------------------------------------------------------
-/// We define an interface so the Proxy and the Real Service 
+/// We define an interface so the Proxy and the Real Service
 /// can be used interchangeably by the client.
+library;
 
 abstract class VideoInterface {
   void playVideo(String videoId);
@@ -47,7 +48,7 @@ class VideoProxy implements VideoInterface {
     // Solution 2: Virtual Proxy (Lazy Loading)
     // We only create the expensive object when a valid request is actually made.
     _realService ??= RealVideoService();
-    
+
     _realService!.playVideo(videoId);
   }
 
@@ -55,7 +56,7 @@ class VideoProxy implements VideoInterface {
   void getDescription(String videoId) {
     // We can also perform caching or logging here
     print('VideoProxy: Logging request for description of $videoId');
-    
+
     _realService ??= RealVideoService();
     _realService!.getDescription(videoId);
   }

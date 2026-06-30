@@ -1,28 +1,28 @@
-# 🎨 Decorator Pattern
+# Decorator Pattern
 
-## 🧠 Definition
+## Definition
 
 
 The Decorator design pattern is a structural pattern that allows you to dynamically add or modify the behavior of an object without altering its structure. It achieves this by wrapping the object in a "decorator" class that adds extra functionalities. This pattern prioritizes composition over inheritance and allows you to add features without modifying the base object's code.
 
-### 🔑 Key aspects of the Decorator pattern:
+### Key aspects of the Decorator pattern:
 
-- **Dynamic behavior addition**:  
+- **Dynamic behavior addition**:
   Decorators allow you to add new functionalities to objects at runtime, making it easy to extend or modify their behavior without changing their core structure.
 
-- **Composition over inheritance**:  
+- **Composition over inheritance**:
   Instead of using inheritance, Decorator relies on wrapping the object within a decorator class, adding new features without modifying the original class.
 
-- **Flexibility and modularity**:  
+- **Flexibility and modularity**:
   The pattern promotes a flexible and modular approach to adding functionalities, allowing you to combine different decorators to create various combinations of behaviors.
 
-- **Open-Closed Principle**:  
+- **Open-Closed Principle**:
   It adheres to the Open-Closed Principle by allowing the extension of object behavior without modifying the base class.
 
 
 ---
 
-## 🚀 When to Use
+## When to Use
 
 * When you need to add features to individual objects dynamically and transparently without affecting other objects.
 * When subclassing leads to a large number of classes for every possible feature combination.
@@ -31,7 +31,7 @@ The Decorator design pattern is a structural pattern that allows you to dynamica
 
 ---
 
-## 🧱 Structure
+## Structure
 
 **Component (interface or abstract class)**
 ↳ Defines the contract for the object that can be decorated.
@@ -51,27 +51,27 @@ Client → ConcreteComponent → Decorator → Decorator → ...
 
 ---
 
-## ✅ Key Principles in Action
+## Key Principles in Action
 
-### 🔹 1. **Composition Over Inheritance**
+### 1. **Composition Over Inheritance**
 
 Rather than creating multiple subclasses for every combination of behavior, we compose new behavior by wrapping components.
 
-### 🔹 2. **Open/Closed Principle**
+### 2. **Open/Closed Principle**
 
 You can add new decorators to extend functionality without modifying existing code — just wrap the component.
 
-### 🔹 3. **Single Responsibility**
+### 3. **Single Responsibility**
 
 Each decorator class has one responsibility: adding one specific feature. This keeps classes focused and easy to maintain.
 
-### 🔹 4. **Layered Enhancements**
+### 4. **Layered Enhancements**
 
 Decorators can be stacked in any order, and each one adds something on top of the others — just like layering pizza toppings or nesting widgets in Flutter.
 
 ---
 
-## 🧱 SOLID Principles Applied
+## SOLID Principles Applied
 
 | Principle                     | Description                                                                                |
 | ----------------------------- | ------------------------------------------------------------------------------------------ |
@@ -82,7 +82,7 @@ Decorators can be stacked in any order, and each one adds something on top of th
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 * `core_examples/` → Simple Dart examples showing how decorators wrap and extend behavior.
 * `flutter_examples/` → Flutter UI examples showing how widgets are decorated dynamically.
@@ -91,9 +91,9 @@ Decorators can be stacked in any order, and each one adds something on top of th
 
 ---
 
-## 🎯 Real-World Analogy
+## Real-World Analogy
 
-Think of decorating a plain pizza 🍕:
+Think of decorating a plain pizza :
 
 * Start with a `PizzaBase`.
 * Wrap it with `Sauce`, `Mozzarella`, `Basil`, etc.
@@ -102,7 +102,7 @@ Think of decorating a plain pizza 🍕:
 
 ---
 
-## 🧰 Flutter Insight
+## Flutter Insight
 
 In Flutter, **every time you wrap a widget with another widget** (like `Padding`, `Center`, `Container`, etc.), you're essentially using the Decorator Pattern. Each wrapper adds behavior or style without changing the core widget.
 
@@ -123,8 +123,8 @@ PizzaBase() → Sauce() → Cheese() → Basil()
 
 ---
 
-## 📌 Summary
+## Summary
 
 The Decorator Pattern is all about flexible, runtime-based extension of object behavior. It helps avoid bloated inheritance trees and makes your code more modular and reusable. Especially in UI frameworks like Flutter, this pattern is used daily — often without even realizing it.
 
-It’s a powerful tool for clean, maintainable code — one slice at a time 🍕.
+It’s a powerful tool for clean, maintainable code — one slice at a time .

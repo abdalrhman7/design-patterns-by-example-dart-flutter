@@ -4,6 +4,7 @@
 /// We encapsulate the varying behaviors (publishing / rendering logic)
 /// into distinct State classes. The `Document` delegates execution to
 /// its currently held State object.
+library;
 
 // Abstract State
 abstract class State {
@@ -58,7 +59,8 @@ class DraftState extends State {
 
   @override
   void render() {
-    if (document.currentUserRole == 'author' || document.currentUserRole == 'admin') {
+    if (document.currentUserRole == 'author' ||
+        document.currentUserRole == 'admin') {
       print('DraftState: Rendering Draft Document... (Editable)');
     } else {
       print('DraftState: Access denied.');

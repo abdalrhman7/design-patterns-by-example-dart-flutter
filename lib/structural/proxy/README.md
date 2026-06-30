@@ -1,12 +1,12 @@
-# 🛡️ Proxy Pattern
+# ️ Proxy Pattern
 
-## 🧠 Definition
+## Definition
 
 The **Proxy Pattern** is a structural design pattern that provides a surrogate or placeholder for another object to control access to it. It acts as an intermediary, intercepting calls to the "Real Subject" to perform additional logic such as lazy initialization, logging, access control, or caching.
 
 ---
 
-## 🚀 When to Use
+## When to Use
 
 - **Virtual Proxy (Lazy Loading):** When you have a heavyweight object (like a large image or a database connection) that you only want to create or load when it is actually needed.
 - **Protection Proxy (Access Control):** When you want to restrict which clients can access certain methods of the real object based on permissions/roles.
@@ -16,7 +16,7 @@ The **Proxy Pattern** is a structural design pattern that provides a surrogate o
 
 ---
 
-## 🧱 Structure
+## Structure
 
 `ServiceInterface` (Interface/Abstract Class)
    ├── Defines the common operations for both the Real Service and the Proxy.
@@ -31,20 +31,20 @@ The **Proxy Pattern** is a structural design pattern that provides a surrogate o
 
 ---
 
-## ✅ Key Principles in Action
+## Key Principles in Action
 
-### 🔹 1. **Control Access**
+### 1. **Control Access**
 The main responsibility of a Proxy is to manage the lifecycle or access permissions of the real object. The client interacts with the Proxy, thinking it's the real service, while the Proxy decides if, when, and how to involve the actual heavy object.
 
-### 🔹 2. **Transparency**
+### 2. **Transparency**
 Because the Proxy and the Real Service implement the same interface, the client code doesn't need to know it's talking to a surrogate. This allows you to swap a direct connection for a proxied one without breaking any existing code.
 
-### 🔹 3. **Separation of Concerns**
+### 3. **Separation of Concerns**
 The core business logic stays inside the `RealService`, while "cross-cutting concerns" like security, caching, or lazy-loading are extracted into the `Proxy`. This keeps the classes small and focused (SRP).
 
 ---
 
-## 🧱 SOLID Principles Applied
+## SOLID Principles Applied
 
 | Principle | Description |
 |----------|-------------|
@@ -54,6 +54,6 @@ The core business logic stays inside the `RealService`, while "cross-cutting con
 
 ---
 
-## 📌 Summary
+## Summary
 
 The Proxy Pattern introduces an intermediary that controls access to another object while keeping the same interface. This allows adding behaviors like lazy loading, caching, and security without changing the original object's code.
